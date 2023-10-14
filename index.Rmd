@@ -9,6 +9,21 @@ output:
 
 
 
-## Project thoughts
+## Project thoughts (Milestone 1)
 
 I am interested in exploring data related to college admissions, socioeconomic status, and income inequality in the U.S. A handful of other topics I'm interested in exploring (depending on what data is available) include food supply, fast fashion, and music streaming platforms. 
+
+## Formal proposal (Milestone 2)
+I've found a dataset exploring generational differences in abortion attitudes in the United States post-Dobbs.
+
+The dataset asks respondents from multiple generations (the Silent Generation, Gen X, Baby Boomers, Millenials, and Gen Z) about their attitudes on abortion, including whether it is permissible in more specific situations (e.g. if the fetus has a defect, if the person carrying the fetus had been assaulted, etc.). 
+
+In particular, I'd like to explore if there are any variables that correlate with attitudes for specific questions (for example, would different generations vary on which situations are permissible for abortion?). I hypothesize that respondents are more likely to be sympathetic to abortion if they can empathize with the circumstances that lead to the decision to have one (as opposed to deciding on moral/religious/abstract grounds). 
+
+In short, I hypothesize that attitudes vary depending on which concerns the respondent might find more relatable. For example, male respondents may find the scenario of being sexually assaulted less relatable, while older respondents may find the scenario of having to have an abortion for health-related reasons more relatable. 
+
+For reference, the study (by Carlisle Rainey) is from the Harvard Dataverse:
+Generational Differences in Abortion Attitudes in the United States: Will Dobbs v. Jackson Become Starkly Counter-Majoritarian?
+The data can be found at https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/JFMXDH.
+The original paper can be found at:
+https://osf.io/preprints/socarxiv/jmz96/.
