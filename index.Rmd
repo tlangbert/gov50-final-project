@@ -30,6 +30,24 @@ https://osf.io/preprints/socarxiv/jmz96/.
 
 ## Final Project Milestone 3
 
+# Trying Freedom in the World 2013-2022 Dataset
+Link to dataset: https://www.kaggle.com/datasets/justin2028/freedom-in-the-world-2013-2022
+```{r}
+library(tidyverse)
+library(ggplot2)
+world_freedom <- read.csv("Freedom in the World 2013-2022 Dataset (Ver 2.18.23).csv")
+```
+
+```{r}
+world_freedom |>
+  group_by(Region) |>
+  summarize(mapping = aes(x = Region, y = ))
+```
+
+
+
+
+## Trying world freedom data
 ```{r}
 library(tidyverse)
 library(ggplot2)
