@@ -27,3 +27,39 @@ Generational Differences in Abortion Attitudes in the United States: Will Dobbs 
 The data can be found at https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/JFMXDH.
 The original paper can be found at:
 https://osf.io/preprints/socarxiv/jmz96/.
+
+## Final Project Milestone 3
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+freedom <- read.csv("freedom.csv")
+```
+
+```{r}
+freedom |>
+  group_by(Region_Name) |>
+  summarise(mean_CL = mean(CL),
+            mean_PR = mean(PR))
+```
+
+```{r}
+plot_1 <- ggplot(data = freedom,
+                 mapping = aes(x = Region_Name,
+                               y = CL)) +
+  geom_boxplot() +
+  labs(x = "Continent", y = "Civil Liberties")
+plot_1
+```
+
+
+
+
+
+
+
+
+
+
+
+
