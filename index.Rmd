@@ -39,12 +39,54 @@ world_freedom <- read.csv("Freedom in the World 2013-2022 Dataset (Ver 2.18.23).
 ```
 
 ```{r}
-world_freedom |>
+plot_2 <- world_freedom |>
   group_by(Region) |>
-  summarize(mapping = aes(x = Region, y = ))
+  summarize(mean_PR = mean(PR.rating)) |>
+  pivot_wider(names_from = Region, values_from = mean_PR)
+
+knitr::kable(plot_2,
+             digits = 3)
+  
+```
+
+## Trying world happiness data 2015-2022
+Link to the data: https://www.kaggle.com/datasets/mathurinache/world-happiness-report/data
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+```{r}
+wh_2015 <- read.csv("wh_2015.csv")
+wh_2016 <- read.csv("wh_2016.csv")
+wh_2017 <- read.csv("wh_2017.csv")
+wh_2018 <- read.csv("wh_2018.csv")
+wh_2019 <- read.csv("wh_2019.csv")
+wh_2020 <- read.csv("wh_2020.csv")
+wh_2021 <- read.csv("wh_2021.csv")
+wh_2022 <- read.csv("wh_2022.csv")
+```
+
+```{r}
+colnames(wh_2015)
+```
+```{r}
+colnames(wh_2016)
+```
+```{r}
+colnames(wh_2017)
+```
+```{r}
+colnames(wh_2018)
 ```
 
 
+
+```{r}
+wh_2015 |>
+  group_by(Region) |>
+  summarize(mean_happiness = mean(Happiness.Score)) |>
+  mutate(year = 2015)
+```
 
 
 ## Trying world freedom data
