@@ -9,41 +9,8 @@ output:
 
 ## Final Project Milestone 3
 
-# Trying consumer shopping dataset 
-(https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset)
-```{r}
-library(tidyverse)
-library(ggplot2)
-shopping <- read.csv("shopping_trends_updated.csv")
-```
-```{r}
-shopping |>
-  group_by(Size) |>
-  summarize(mean(Purchase.Amount..USD.), sd(Purchase.Amount..USD.), var(Purchase.Amount..USD.))
-```
-
-```{r}
-shopping |>
-  group_by(Season, Gender) |>
-  summarize(mean_purchase = mean(Purchase.Amount..USD.))
-```
-
-```{r}
-shopping <- shopping |>
-  mutate(Rating.Bracket = case_when(
-    Review.Rating < 1 ~ "Under 1 Star",
-    Review.Rating >= 1 & Review.Rating < 2 ~ "1 Star",
-    Review.Rating >= 2 & Review.Rating < 3 ~ "2 Stars",
-    Review.Rating >= 3 & Review.Rating < 4 ~ "3 Stars",
-    Review.Rating >= 4 ~ "4+ Stars"
-  ))
-```
-
-
-
-
-
-
+# USA Real Estate Dataset
+(https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset)
 
 
 
