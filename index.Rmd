@@ -9,6 +9,7 @@ output:
 
 ## Final Project Milestone 3
 ```{r}
+# Setup chunk
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
