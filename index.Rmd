@@ -16,10 +16,6 @@ library(tidyverse)
 library(ggplot2)
 shopping <- read.csv("shopping_trends_updated.csv")
 ```
-
-```{r}
-shopping
-```
 ```{r}
 shopping |>
   group_by(Size) |>
