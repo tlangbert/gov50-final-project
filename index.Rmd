@@ -7,112 +7,41 @@ output:
     self_contained: false
 ---
 
-
-
-## Project thoughts (Milestone 1)
-
-I am interested in exploring data related to college admissions, socioeconomic status, and income inequality in the U.S. A handful of other topics I'm interested in exploring (depending on what data is available) include food supply, fast fashion, and music streaming platforms. 
-
-## Formal proposal (Milestone 2)
-I have found a dataset exploring generational differences in abortion attitudes in the United States post-Dobbs.
-
-The dataset asks respondents from multiple generations (the Silent Generation, Gen X, Baby Boomers, Millenials, and Gen Z) about their attitudes on abortion, including whether it is permissible in more specific situations (e.g. if the fetus has a defect, if the person carrying the fetus had been assaulted, etc.). 
-
-In particular, I'd like to explore if there are any variables that correlate with attitudes for specific questions (for example, would different generations vary on which situations are permissible for abortion?). I hypothesize that respondents are more likely to be sympathetic to abortion if they can empathize with the circumstances that lead to the decision to have one (as opposed to deciding on moral/religious/abstract grounds). 
-
-In short, I hypothesize that attitudes vary depending on which concerns the respondent might find more relatable. For example, male respondents may find the scenario of being sexually assaulted less relatable, while older respondents may find the scenario of having to have an abortion for health-related reasons more relatable. 
-
-For reference, the study (by Carlisle Rainey) is from the Harvard Dataverse:
-Generational Differences in Abortion Attitudes in the United States: Will Dobbs v. Jackson Become Starkly Counter-Majoritarian?
-The data can be found at https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/JFMXDH.
-The original paper can be found at:
-https://osf.io/preprints/socarxiv/jmz96/.
-
 ## Final Project Milestone 3
 
-# Trying Freedom in the World 2013-2022 Dataset
-Link to dataset: https://www.kaggle.com/datasets/justin2028/freedom-in-the-world-2013-2022
+# Trying consumer shopping dataset 
+(https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset)
 ```{r}
 library(tidyverse)
 library(ggplot2)
-world_freedom <- read.csv("Freedom in the World 2013-2022 Dataset (Ver 2.18.23).csv")
+shopping <- read.csv("shopping_trends_updated.csv")
 ```
 
 ```{r}
-plot_2 <- world_freedom |>
-  group_by(Region) |>
-  summarize(mean_PR = mean(PR.rating)) |>
-  pivot_wider(names_from = Region, values_from = mean_PR)
-
-knitr::kable(plot_2,
-             digits = 3)
-  
-```
-
-## Trying world happiness data 2015-2022
-Link to the data: https://www.kaggle.com/datasets/mathurinache/world-happiness-report/data
-```{r}
-library(tidyverse)
-library(ggplot2)
+shopping
 ```
 ```{r}
-wh_2015 <- read.csv("wh_2015.csv")
-wh_2016 <- read.csv("wh_2016.csv")
-wh_2017 <- read.csv("wh_2017.csv")
-wh_2018 <- read.csv("wh_2018.csv")
-wh_2019 <- read.csv("wh_2019.csv")
-wh_2020 <- read.csv("wh_2020.csv")
-wh_2021 <- read.csv("wh_2021.csv")
-wh_2022 <- read.csv("wh_2022.csv")
+shopping |>
+  group_by(Size) |>
+  summarize(mean(Purchase.Amount..USD.), sd(Purchase.Amount..USD.), var(Purchase.Amount..USD.))
 ```
 
 ```{r}
-colnames(wh_2015)
-```
-```{r}
-colnames(wh_2016)
-```
-```{r}
-colnames(wh_2017)
-```
-```{r}
-colnames(wh_2018)
-```
-
-
-
-```{r}
-wh_2015 |>
-  group_by(Region) |>
-  summarize(mean_happiness = mean(Happiness.Score)) |>
-  mutate(year = 2015)
-```
-
-
-## Trying world freedom data
-```{r}
-library(tidyverse)
-library(ggplot2)
-freedom <- read.csv("freedom.csv")
+shopping |>
+  group_by(Season, Gender) |>
+  summarize(mean_purchase = mean(Purchase.Amount..USD.))
 ```
 
 ```{r}
-freedom |>
-  group_by(Region_Name) |>
-  summarise(mean_CL = mean(CL),
-            mean_PR = mean(PR))
+shopping <- shopping |>
+  mutate(Rating.Bracket = case_when(
+    Review.Rating < 1 ~ "Under 1 Star",
+    Review.Rating >= 1 & Review.Rating < 2 ~ "1 Star",
+    Review.Rating >= 2 & Review.Rating < 3 ~ "2 Stars",
+    Review.Rating >= 3 & Review.Rating < 4 ~ "3 Stars",
+    Review.Rating >= 4 ~ "4+ Stars"
+  ))
 ```
-
-```{r}
-plot_1 <- ggplot(data = freedom,
-                 mapping = aes(x = Region_Name,
-                               y = CL)) +
-  geom_boxplot() +
-  labs(x = "Continent", y = "Civil Liberties")
-plot_1
-```
-
-
 
 
 
