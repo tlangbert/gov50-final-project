@@ -8,10 +8,3 @@ output:
 ---
 
 ## Final Project Milestone 3
-
-# USA Real Estate Dataset
-(https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset)
-
-
-
-
