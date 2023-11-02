@@ -11,4 +11,30 @@ output:
 Congress Generic Ballot Polls from FiveThirtyEight
 Source: https://github.com/fivethirtyeight/data/tree/master/congress-generic-ballot
 
+```{r}
+generic_ballot_averages <- read.csv("congress-generic-ballot/generic_ballot_averages.csv")
+generic_pollist <- read.csv("congress-generic-ballot/generic_pollist.csv")
+generic_topline_historical <- read.csv("congress-generic-ballot/generic_topline_historical.csv")
+```
 
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+president_primary_polls <- read.csv("president_primary_polls.csv")
+```
+
+```{r}
+president_primary_polls
+```
+
+```{r}
+president_primary_polls |>
+  filter(party == "REP") |>
+  group_by(candidate_name) |>
+  summarize(mean_pct = mean(pct)) |>
+  filter(mean_pct >= 3.0) |>
+  knitr::kable(digits = 2)
+```
