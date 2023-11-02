@@ -8,29 +8,9 @@ output:
 ---
 
 ## Final Project Milestone 3
-Latest Polls from FiveThirtyEight
-Source: https://github.com/fivethirtyeight/data/tree/master/polls
-
 ```{r}
 library(tidyverse)
-library(ggplot2)
 library(dplyr)
+library(ggplot2)
 ```
 
-```{r}
-president_primary_polls <- read.csv("president_primary_polls.csv")
-```
-
-```{r}
-president_primary_polls
-```
-
-```{r}
-president_primary_polls |>
-  filter(party == "REP") |>
-  group_by(candidate_name) |>
-  summarize(mean_pct = mean(pct)) |>
-  filter(mean_pct >= 3.0) |>
-  arrange(desc(mean_pct)) |>
-  knitr::kable(digits = 2)
-```
