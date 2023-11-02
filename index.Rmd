@@ -8,14 +8,8 @@ output:
 ---
 
 ## Final Project Milestone 3
-Congress Generic Ballot Polls from FiveThirtyEight
-Source: https://github.com/fivethirtyeight/data/tree/master/congress-generic-ballot
-
-```{r}
-generic_ballot_averages <- read.csv("congress-generic-ballot/generic_ballot_averages.csv")
-generic_pollist <- read.csv("congress-generic-ballot/generic_pollist.csv")
-generic_topline_historical <- read.csv("congress-generic-ballot/generic_topline_historical.csv")
-```
+Latest Polls from FiveThirtyEight
+Source: https://github.com/fivethirtyeight/data/tree/master/polls
 
 ```{r}
 library(tidyverse)
