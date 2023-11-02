@@ -14,6 +14,7 @@ Source: https://github.com/fivethirtyeight/data/tree/master/polls
 ```{r}
 library(tidyverse)
 library(ggplot2)
+library(dplyr)
 ```
 
 ```{r}
@@ -30,5 +31,6 @@ president_primary_polls |>
   group_by(candidate_name) |>
   summarize(mean_pct = mean(pct)) |>
   filter(mean_pct >= 3.0) |>
+  arrange(desc(mean_pct)) |>
   knitr::kable(digits = 2)
 ```
