@@ -1518,8 +1518,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="final-project-milestone-3">Final Project Milestone 3</h2>
-Sources:
-<a href="https://www.idea.int/gsod-indices/dataset-resources" class="uri">https://www.idea.int/gsod-indices/dataset-resources</a>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Setup chunk</span></span>
@@ -1537,26 +1535,35 @@ Sources:
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>billionaires</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>selfMade</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>finalWorth</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>finalWorth</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>finalWorth</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span>,</span>
 <span>               col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Self-Made Status"</span>, </span>
-<span>                             <span class='st'>"Net Worth (millions USD)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<span>                             <span class='st'>"Average Net Worth (in millions USD)"</span>,</span>
+<span>                             <span class='st'>"Net Worth Standard Dev."</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 46%" />
+<col style="width: 31%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Self-Made Status</th>
-<th style="text-align: right;">Net Worth (millions USD)</th>
+<th style="text-align: right;">Average Net Worth (in millions USD)</th>
+<th style="text-align: right;">Net Worth Standard Dev.</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">4970.41</td>
+<td style="text-align: right;">10614.18</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: right;">4465.40</td>
+<td style="text-align: right;">9455.30</td>
 </tr>
 </tbody>
 </table>

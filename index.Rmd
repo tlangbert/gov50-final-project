@@ -22,10 +22,11 @@ billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```{r}
 billionaires |>
   group_by(selfMade) |>
-  summarize(mean(finalWorth)) |>
+  summarize(mean(finalWorth), sd(finalWorth)) |>
   knitr::kable(digits = 2,
                col.names = c("Self-Made Status", 
-                             "Net Worth (millions USD)"))
+                             "Average Net Worth (in millions USD)",
+                             "Net Worth Standard Dev."))
 ```
 
 ```{r}
