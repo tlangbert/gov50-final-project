@@ -13,6 +13,7 @@ output:
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
+library(infer)
 ```
 
 ```{r, echo=FALSE}
