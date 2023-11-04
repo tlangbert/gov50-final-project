@@ -35,7 +35,8 @@ ggplot(data = billionaires,
   labs(x = "Self-Made Status", 
        y = "Net Worth (in millions of dollars)", 
        title = "Comparing the Net Worth of Self-Made vs. Not Self-Made Billionaires", 
-       fill = "Self-Made")
+       fill = "Self-Made") +
+  theme_bw()
 ```
 
 ```{r, echo=FALSE}
@@ -45,7 +46,10 @@ billionaires |>
   knitr::kable(digits = 2,
                col.names = c("Self-Made Status", 
                              "Average Net Worth (in millions USD)",
-                             "Net Worth Standard Dev."))
+                             "Net Worth Standard Dev.")) 
 ```
+
+
+
 
 Source: https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset
