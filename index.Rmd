@@ -8,10 +8,41 @@ output:
 ---
 
 ## Final Project Milestone 3
+Sources:
+  https://www.idea.int/gsod-indices/dataset-resources
 ```{r}
 # Setup chunk
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
 ```
+
+```{r}
+billionaires <- read.csv("Billionaires Statistics Dataset.csv")
+```
+
+```{r}
+billionaires |>
+  group_by(selfMade) |>
+  summarize(mean(finalWorth)) |>
+  knitr::kable(digits = 2,
+               col.names = c("Self-Made Status", 
+                             "Net Worth (millions USD)"))
+```
+
+```{r}
+ggplot(data = billionaires, 
+       aes(x = selfMade, 
+           y = finalWorth, 
+           fill = selfMade)) +
+  geom_boxplot() +
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
+  labs(x = "Self-Made Status", 
+       y = "Net Worth (in millions of dollars)", 
+       title = "Comparing the Net Worth of Self-Made vs. Not Self-Made Billionaires", 
+       fill = "Self-Made")
+```
+
+
+
 
