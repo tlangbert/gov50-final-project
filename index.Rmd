@@ -8,8 +8,6 @@ output:
 ---
 
 ## Final Project Milestone 3
-Sources:
-  https://www.idea.int/gsod-indices/dataset-resources
 ```{r}
 # Setup chunk
 library(tidyverse)

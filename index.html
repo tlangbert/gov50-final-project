@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Billionaires Statistics Dataset.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1517,18 +1517,65 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="project-thoughts-milestone-1">Project thoughts (Milestone 1)</h2>
-<p>I am interested in exploring data related to college admissions, socioeconomic status, and income inequality in the U.S. A handful of other topics I’m interested in exploring (depending on what data is available) include food supply, fast fashion, and music streaming platforms.</p>
-<h2 id="formal-proposal-milestone-2">Formal proposal (Milestone 2)</h2>
-<p>I have found a dataset exploring generational differences in abortion attitudes in the United States post-Dobbs.</p>
-<p>The dataset asks respondents from multiple generations (the Silent Generation, Gen X, Baby Boomers, Millenials, and Gen Z) about their attitudes on abortion, including whether it is permissible in more specific situations (e.g. if the fetus has a defect, if the person carrying the fetus had been assaulted, etc.).</p>
-<p>In particular, I’d like to explore if there are any variables that correlate with attitudes for specific questions (for example, would different generations vary on which situations are permissible for abortion?). I hypothesize that respondents are more likely to be sympathetic to abortion if they can empathize with the circumstances that lead to the decision to have one (as opposed to deciding on moral/religious/abstract grounds).</p>
-<p>In short, I hypothesize that attitudes vary depending on which concerns the respondent might find more relatable. For example, male respondents may find the scenario of being sexually assaulted less relatable, while older respondents may find the scenario of having to have an abortion for health-related reasons more relatable.</p>
-<p>For reference, the study (by Carlisle Rainey) is from the Harvard Dataverse:
-Generational Differences in Abortion Attitudes in the United States: Will Dobbs v. Jackson Become Starkly Counter-Majoritarian?
-The data can be found at <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/JFMXDH" class="uri">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/JFMXDH</a>.
-The original paper can be found at:
-<a href="https://osf.io/preprints/socarxiv/jmz96/" class="uri">https://osf.io/preprints/socarxiv/jmz96/</a>.</p>
+<h2 id="final-project-milestone-3">Final Project Milestone 3</h2>
+Sources:
+<a href="https://www.idea.int/gsod-indices/dataset-resources" class="uri">https://www.idea.int/gsod-indices/dataset-resources</a>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Setup chunk</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>billionaires</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Billionaires Statistics Dataset.csv"</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>billionaires</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>selfMade</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>finalWorth</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span>,</span>
+<span>               col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Self-Made Status"</span>, </span>
+<span>                             <span class='st'>"Net Worth (millions USD)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Self-Made Status</th>
+<th style="text-align: right;">Net Worth (millions USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">4970.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">4465.40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>billionaires</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>selfMade</span>, </span>
+<span>           y <span class='op'>=</span> <span class='va'>finalWorth</span>, </span>
+<span>           fill <span class='op'>=</span> <span class='va'>selfMade</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_log10</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/dollar_format.html'>dollar_format</a></span><span class='op'>(</span>prefix <span class='op'>=</span> <span class='st'>"$"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># Change scale of y axis w/ help of GPT &lt;3 </span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Self-Made Status"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Net Worth (in millions of dollars)"</span>, </span>
+<span>       title <span class='op'>=</span> <span class='st'>"Comparing the Net Worth of Self-Made vs. Not Self-Made Billionaires"</span>, </span>
+<span>       fill <span class='op'>=</span> <span class='st'>"Self-Made"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
