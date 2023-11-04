@@ -8,18 +8,18 @@ output:
 ---
 
 ## Final Project Milestone 3
-```{r}
+```{r, echo=FALSE}
 # Setup chunk
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
 ```
 
-```{r}
+```{r, echo=FALSE}
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```
 
-```{r}
+```{r, echo=FALSE}
 billionaires |>
   group_by(selfMade) |>
   summarize(mean(finalWorth), sd(finalWorth)) |>
@@ -29,7 +29,7 @@ billionaires |>
                              "Net Worth Standard Dev."))
 ```
 
-```{r}
+```{r, echo=FALSE}
 ggplot(data = billionaires, 
        aes(x = selfMade, 
            y = finalWorth, 
