@@ -8,6 +8,9 @@ output:
 ---
 
 ## Final Project Milestone 3
+ 
+For this final project, I am exploring a dataset containing information about billionaires worldwide. In particular, I am interested in exploring what factors are most strongly correlated with being a billionaire (e.g. whether the billionaire is self-made or conditions in where the billionaire lives) to better understand how these individuals have accrued so much wealth. 
+
 ```{r, echo=FALSE}
 # Setup chunk
 library(tidyverse)
@@ -20,15 +23,7 @@ library(infer)
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```
 
-```{r, echo=FALSE}
-billionaires |>
-  group_by(selfMade) |>
-  summarize(mean(finalWorth), sd(finalWorth)) |>
-  knitr::kable(digits = 2,
-               col.names = c("Self-Made Status", 
-                             "Average Net Worth (in millions USD)",
-                             "Net Worth Standard Dev."))
-```
+In the data visualization below, I'm comparing the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their avaerage net worths--it looks like the typical self-made billionaire can expect to a net worth approximately $505 million (USD) lower than their counterparts with inherited wealth. Moving forward, I would like to explore whether there are confounding variables at play (for example, maybe people with inherited wealth are more likely to work in different industries). 
 
 ```{r, echo=FALSE}
 ggplot(data = billionaires, 
@@ -43,6 +38,14 @@ ggplot(data = billionaires,
        fill = "Self-Made")
 ```
 
-
+```{r, echo=FALSE}
+billionaires |>
+  group_by(selfMade) |>
+  summarize(mean(finalWorth), sd(finalWorth)) |>
+  knitr::kable(digits = 2,
+               col.names = c("Self-Made Status", 
+                             "Average Net Worth (in millions USD)",
+                             "Net Worth Standard Dev."))
+```
 
 
