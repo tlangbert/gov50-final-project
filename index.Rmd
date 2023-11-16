@@ -78,7 +78,7 @@ ggplot(data = billionaires,
        y = "Count")
 ```
 ```{r, echo = FALSE, eval = FALSE}
-summary(billionaires)
+# summary(billionaires)
 ```
 
 
