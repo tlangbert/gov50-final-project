@@ -58,7 +58,32 @@ ggplot(data = billionaires,
        title = "Comparing the Net Worth of Billionaires by Gender", 
        fill = "Gender") +
   theme_linedraw() +
-  scale_fill_manual(values = c("pink1", "lightblue2"))
+  scale_fill_manual(values = c("pink1", "lightblue3"))
+```
+
+```{r, echo=FALSE}
+billionaires |>
+  group_by(gender) |>
+  summarize(mean(finalWorth), sd(finalWorth)) |>
+  knitr::kable(digits = 2,
+               col.names = c("Gender", 
+                             "Average Net Worth (in millions USD)",
+                             "Net Worth Standard Dev."))
+```
+
+```{r, echo = FALSE}
+ggplot(data = billionaires, 
+       aes(x = gender, 
+           y = finalWorth, 
+           fill = selfMade)) +
+  geom_boxplot() +
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
+  labs(x = "Gender", 
+       y = "Net Worth (in millions of dollars)", 
+       title = "Comparing the Net Worth of Billionaires by Gender and Self-Made Status", 
+       fill = "Self-Made") +
+  theme_linedraw() +
+  scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
 ```{r, echo=FALSE}
 billionaires |>
