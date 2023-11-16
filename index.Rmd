@@ -235,8 +235,8 @@ country_counts <- billionaires |>
   summarise(count = n())
 
 sorted_countries <- country_counts[order(-country_counts$count), ]
-top_17_countries <- head(sorted_countries, 17)
-knitr::kable(top_17_countries,
+top_14_countries <- head(sorted_countries, 14)
+knitr::kable(top_14_countries,
              col.names = c("Country", "Count"))
 
 ```
