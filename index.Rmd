@@ -7,9 +7,10 @@ output:
     self_contained: false
 ---
 
-## Final Project Milestone 3
+## Final Project Milestone 4
  
-For this final project, I am exploring a dataset containing information about billionaires worldwide. In particular, I am interested in exploring what factors are most strongly correlated with being a billionaire (e.g. whether the billionaire is self-made or conditions in where the billionaire lives) to better understand how these individuals have accrued so much wealth. 
+In this final project, I explore data about billionaires worldwide. 
+I am interested in understanding what factors differentiate the "nouveau riche" and billionaires who inherited their wealth. Some variables I explore include whether there are specific industries or regions that are more strongly correlated with inherited on self-earned wealth.
 
 ```{r, echo=FALSE}
 # Setup chunk
@@ -18,12 +19,10 @@ library(dplyr)
 library(ggplot2)
 library(infer)
 ```
-
 ```{r, echo=FALSE}
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```
-
-In the data visualization below, I'm comparing the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their avaerage net worths--it looks like the typical self-made billionaire can expect to a net worth approximately $505 million (USD) lower than their counterparts with inherited wealth. Moving forward, I would like to explore whether there are confounding variables at play (for example, maybe people with inherited wealth are more likely to work in different industries). 
+In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their avaerage net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.
 
 ```{r, echo=FALSE}
 ggplot(data = billionaires, 
@@ -36,7 +35,7 @@ ggplot(data = billionaires,
        y = "Net Worth (in millions of dollars)", 
        title = "Comparing the Net Worth of Self-Made vs. Not Self-Made Billionaires", 
        fill = "Self-Made") +
-  theme_bw()
+  theme_linedraw()
 ```
 
 ```{r, echo=FALSE}
@@ -46,10 +45,44 @@ billionaires |>
   knitr::kable(digits = 2,
                col.names = c("Self-Made Status", 
                              "Average Net Worth (in millions USD)",
-                             "Net Worth Standard Dev.")) 
+                             "Net Worth Standard Dev."))
 ```
 
+```{r, echo = FALSE}
+# after install.packages("countrycode")
+library(countrycode)
 
+# Add continent variable
+billionaires <- billionaires |>
+  mutate(continent = countrycode(country, "country.name", "continent"))
+```
+```{r, echo = FALSE}
+ggplot(data = billionaires, 
+       aes(x = continent, 
+           y = finalWorth, 
+           fill = selfMade)) +
+  geom_boxplot() +
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
+  labs(x = "Self-Made Status", 
+       y = "Net Worth (in millions of dollars)", 
+       title = "Comparing Self-Made and Not Self-Made Billionaires by Continent", 
+       fill = "Self-Made") +
+  theme_linedraw()
+```
 
+```{r, echo = FALSE}
+ggplot(data = billionaires, 
+       aes(x = reorder(industries, -finalWorth, FUN = median),
+           y = finalWorth, 
+           fill = selfMade)) +
+  geom_boxplot() +
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +
+  labs(x = "Industry of Billionaire", 
+       y = "Net Worth of Billionaire (in millions of dollars)", 
+       title = "Comparing Net Worths of Self-Made and Not Self-Made Billionaires by Industry", 
+       fill = "Self-Made Status") +
+  theme_linedraw() +
+  theme(axis.text.x = element_text(angle=45, hjust = 1))
+```
 
 Source: https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset
