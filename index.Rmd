@@ -39,10 +39,11 @@ ggplot(data = billionaires,
 ```{r, echo=FALSE}
 billionaires |>
   group_by(selfMade) |>
-  summarize(mean(finalWorth), sd(finalWorth)) |>
+  summarize(mean(finalWorth), median(finalWorth), sd(finalWorth)) |>
   knitr::kable(digits = 2,
                col.names = c("Self-Made Status", 
                              "Average Net Worth (in millions USD)",
+                             "Median Net Worth (in millions USD)",
                              "Net Worth Standard Dev."))
 ```
 
@@ -64,10 +65,11 @@ ggplot(data = billionaires,
 ```{r, echo=FALSE}
 billionaires |>
   group_by(gender) |>
-  summarize(mean(finalWorth), sd(finalWorth)) |>
+  summarize(mean(finalWorth), median(finalWorth), sd(finalWorth)) |>
   knitr::kable(digits = 2,
                col.names = c("Gender", 
                              "Average Net Worth (in millions USD)",
+                             "Median Net Worth (in millions USD",
                              "Net Worth Standard Dev."))
 ```
 
@@ -84,15 +86,6 @@ ggplot(data = billionaires,
        fill = "Self-Made") +
   theme_linedraw() +
   scale_fill_manual(values = c("tan1", "lightblue1"))
-```
-```{r, echo=FALSE}
-billionaires |>
-  group_by(gender) |>
-  summarize(mean(finalWorth), sd(finalWorth)) |>
-  knitr::kable(digits = 2,
-               col.names = c("Gender", 
-                             "Average Net Worth (in millions USD)",
-                             "Net Worth Standard Dev."))
 ```
 
 ```{r, echo = FALSE}
