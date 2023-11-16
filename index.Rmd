@@ -9,7 +9,7 @@ output:
 
 ## Final Project Milestone 4
  
-In this final project, I explore data about billionaires worldwide. 
+In this project, I explore data about billionaires worldwide. 
 I am interested in understanding what factors differentiate the "nouveau riche" and billionaires who inherited their wealth. Some variables I explore include whether there are specific industries or regions that are more strongly correlated with inherited on self-earned wealth.
 
 ```{r, echo=FALSE}
@@ -35,7 +35,8 @@ ggplot(data = billionaires,
        y = "Net Worth (in millions of dollars)", 
        title = "Comparing the Net Worth of Self-Made vs. Not Self-Made Billionaires", 
        fill = "Self-Made") +
-  theme_linedraw()
+  theme_linedraw() +
+  scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
 
 ```{r, echo=FALSE}
@@ -67,7 +68,8 @@ ggplot(data = billionaires,
        y = "Net Worth (in millions of dollars)", 
        title = "Comparing Self-Made and Not Self-Made Billionaires by Continent", 
        fill = "Self-Made") +
-  theme_linedraw()
+  theme_linedraw() +
+  scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
 
 ```{r, echo = FALSE}
@@ -79,10 +81,11 @@ ggplot(data = billionaires,
   scale_y_log10(labels = scales::dollar_format(prefix = "$")) +
   labs(x = "Industry of Billionaire", 
        y = "Net Worth of Billionaire (in millions of dollars)", 
-       title = "Comparing Net Worths of Self-Made and Not Self-Made Billionaires by Industry", 
+       title = "Comparing Billionaire Net Worth by Industry & Self-Made Status", 
        fill = "Self-Made Status") +
   theme_linedraw() +
-  theme(axis.text.x = element_text(angle=45, hjust = 1))
+  theme(axis.text.x = element_text(angle=45, hjust = 1)) +
+  scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
 
 Source: https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset
