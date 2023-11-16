@@ -42,7 +42,7 @@ summary(billionaires)
 
 ## Results
 
-In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their avaerage net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.
+In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their average net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.
 
 ```{r, echo=FALSE}
 ggplot(data = billionaires, 
@@ -69,7 +69,6 @@ billionaires |>
                              "Median Net Worth (in millions USD)",
                              "Net Worth Standard Dev."))
 ```
-
 ```{r, echo = FALSE}
 ggplot(data = billionaires, 
        aes(x = gender, 
@@ -79,10 +78,11 @@ ggplot(data = billionaires,
   scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
   labs(x = "Gender", 
        y = "Net Worth (in millions of dollars)", 
-       title = "Comparing the Net Worth of Billionaires by Gender", 
+       title = "Comparing the Net Worth of Billionaires by Gender",
        fill = "Gender") +
   theme_linedraw() +
-  scale_fill_manual(values = c("pink1", "lightblue3"))
+  scale_fill_manual(values = c("pink1", "lightblue3")) +
+  scale_x_discrete(labels = c("Female", "Male"))
 ```
 
 ```{r, echo=FALSE}
@@ -93,7 +93,7 @@ billionaires |>
                col.names = c("Gender", 
                              "Average Net Worth (in millions USD)",
                              "Median Net Worth (in millions USD",
-                             "Net Worth Standard Dev."))
+                             "Net Worth Standard Dev.")) 
 ```
 
 ```{r, echo = FALSE}
@@ -107,9 +107,26 @@ ggplot(data = billionaires,
        y = "Net Worth (in millions of dollars)", 
        title = "Comparing the Net Worth of Billionaires by Gender and Self-Made Status", 
        fill = "Self-Made") +
+  scale_x_discrete(labels = c("Female", "Male")) +
   theme_linedraw() +
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
+```{r, echo = FALSE}
+billionaires |>
+  ggplot(mapping = aes(x = gender, 
+                       fill = selfMade)) +
+  geom_bar(position = "dodge") +
+  theme_minimal() +
+  scale_fill_manual(values = c("tan1", "lightblue1")) +
+  scale_x_discrete(labels = c("Female", "Male")) +
+  labs(title = "Frequency of Billionaires by Gender and Self-Made Status",
+       y = "Count",
+       x = "Age Cohort",
+       fill = "Self-Made Status")
+```
+
+
+
 
 ```{r, echo = FALSE}
 # after install.packages("countrycode")
