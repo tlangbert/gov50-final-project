@@ -77,7 +77,7 @@ ggplot(data = billionaires,
   labs(x = "Net Worth (in millions USD)",
        y = "Count")
 ```
-```{r}
+```{r, echo = FALSE, eval = FALSE}
 summary(billionaires)
 ```
 

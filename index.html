@@ -1686,113 +1686,7 @@ I am interested in understanding what factors differentiate the “nouveau riche
 <p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>billionaires</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>      rank        finalWorth       category        
- Min.   :   1   Min.   :  1000   Length:2640       
- 1st Qu.: 659   1st Qu.:  1500   Class :character  
- Median :1312   Median :  2300   Mode  :character  
- Mean   :1289   Mean   :  4624                     
- 3rd Qu.:1905   3rd Qu.:  4200                     
- Max.   :2540   Max.   :211000                     
-                                                   
-  personName             age           country         
- Length:2640        Min.   : 18.00   Length:2640       
- Class :character   1st Qu.: 56.00   Class :character  
- Mode  :character   Median : 65.00   Mode  :character  
-                    Mean   : 65.14                     
-                    3rd Qu.: 75.00                     
-                    Max.   :101.00                     
-                    NA&#39;s   :65                         
-     city              source           industries       
- Length:2640        Length:2640        Length:2640       
- Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character  
-                                                         
-                                                         
-                                                         
-                                                         
- countryOfCitizenship organization        selfMade      
- Length:2640          Length:2640        Mode :logical  
- Class :character     Class :character   FALSE:828      
- Mode  :character     Mode  :character   TRUE :1812     
-                                                        
-                                                        
-                                                        
-                                                        
-    status             gender           birthDate        
- Length:2640        Length:2640        Length:2640       
- Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character  
-                                                         
-                                                         
-                                                         
-                                                         
-   lastName          firstName            title          
- Length:2640        Length:2640        Length:2640       
- Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character  
-                                                         
-                                                         
-                                                         
-                                                         
-     date              state           residenceStateRegion
- Length:2640        Length:2640        Length:2640         
- Class :character   Class :character   Class :character    
- Mode  :character   Mode  :character   Mode  :character    
-                                                           
-                                                           
-                                                           
-                                                           
-   birthYear      birthMonth       birthDay     cpi_country    
- Min.   :1921   Min.   : 1.00   Min.   : 1.0   Min.   : 99.55  
- 1st Qu.:1948   1st Qu.: 2.00   1st Qu.: 1.0   1st Qu.:117.24  
- Median :1957   Median : 6.00   Median :11.0   Median :117.24  
- Mean   :1957   Mean   : 5.74   Mean   :12.1   Mean   :127.76  
- 3rd Qu.:1966   3rd Qu.: 9.00   3rd Qu.:21.0   3rd Qu.:125.08  
- Max.   :2004   Max.   :12.00   Max.   :31.0   Max.   :288.57  
- NA&#39;s   :76     NA&#39;s   :76      NA&#39;s   :76     NA&#39;s   :184     
- cpi_change_country gdp_country       
- Min.   :-1.900     Length:2640       
- 1st Qu.: 1.700     Class :character  
- Median : 2.900     Mode  :character  
- Mean   : 4.364                       
- 3rd Qu.: 7.500                       
- Max.   :53.500                       
- NA&#39;s   :184                          
- gross_tertiary_education_enrollment
- Min.   :  4.00                     
- 1st Qu.: 50.60                     
- Median : 65.60                     
- Mean   : 67.23                     
- 3rd Qu.: 88.20                     
- Max.   :136.60                     
- NA&#39;s   :182                        
- gross_primary_education_enrollment_country life_expectancy_country
- Min.   : 84.7                              Min.   :54.30          
- 1st Qu.:100.2                              1st Qu.:77.00          
- Median :101.8                              Median :78.50          
- Mean   :102.9                              Mean   :78.12          
- 3rd Qu.:102.6                              3rd Qu.:80.90          
- Max.   :142.1                              Max.   :84.20          
- NA&#39;s   :181                                NA&#39;s   :182            
- tax_revenue_country_country total_tax_rate_country
- Min.   : 0.10               Min.   :  9.90        
- 1st Qu.: 9.60               1st Qu.: 36.60        
- Median : 9.60               Median : 41.20        
- Mean   :12.55               Mean   : 43.96        
- 3rd Qu.:12.80               3rd Qu.: 59.10        
- Max.   :37.20               Max.   :106.30        
- NA&#39;s   :183                 NA&#39;s   :182           
- population_country  latitude_country longitude_country
- Min.   :3.802e+04   Min.   :-40.90   Min.   :-106.35  
- 1st Qu.:6.683e+07   1st Qu.: 35.86   1st Qu.: -95.71  
- Median :3.282e+08   Median : 37.09   Median :  10.45  
- Mean   :5.102e+08   Mean   : 34.90   Mean   :  12.58  
- 3rd Qu.:1.366e+09   3rd Qu.: 40.46   3rd Qu.: 104.20  
- Max.   :1.398e+09   Max.   : 61.92   Max.   : 174.89  
- NA&#39;s   :164         NA&#39;s   :164      NA&#39;s   :164      </code></pre>
+
 </div>
 <h2 id="results">Results</h2>
 <p>In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their average net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.</p>
@@ -1939,7 +1833,7 @@ I am interested in understanding what factors differentiate the “nouveau riche
 <h2 id="conclusion">Conclusion</h2>
 <h2 id="bibliography">Bibliography</h2>
 <p>Source: <a href="https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset" class="uri">https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset</a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
