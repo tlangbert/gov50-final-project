@@ -1,7 +1,7 @@
 ---
-title: "Gov 50 Final Project"
+title: "Who becomes a billionaire and why?"
 author: "Tosca Langbert"
-description: "Who becomes a billionaire and why?"
+description: "Gov 50 Final Project"
 output:
   distill::distill_article:
     self_contained: false
@@ -17,12 +17,26 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(infer)
+library(knitr)
 ```
 
 ## Data (Source and Variables)
 
 ```{r, echo=FALSE}
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
+```
+
+```{r, echo = FALSE}
+# Distribution of net worth
+ggplot(data = billionaires,
+       mapping = aes(x = finalWorth)) +
+  geom_histogram() +
+  theme_minimal() +
+  labs(x = "Net Worth (in millions USD)",
+       y = "Count")
+```
+```{r}
+summary(billionaires)
 ```
 
 
@@ -135,6 +149,29 @@ ggplot(data = billionaires,
   theme(axis.text.x = element_text(angle=45, hjust = 1)) +
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
+
+```{r, echo = FALSE}
+billionaires |>
+  mutate(
+    age_cohort = case_when(
+      age < 20 ~ "Under 20",
+      age >= 20 & age < 40 ~ "Between 20 and 39",
+      age >= 40 & age < 60 ~ "Between 40 and 59",
+      age >= 60 & age < 80 ~ "Between 60 and 79",
+      age >= 80 ~ "Age 80 and Above",
+    ), na.rm = TRUE) |>
+  ggplot(mapping = aes(x = fct_reorder(age_cohort, age), 
+                       fill = selfMade)) +
+  geom_bar(position = "dodge") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = c("tan1", "lightblue1")) +
+  labs(title = "Frequency of Billionaires by Age Cohort and Self-Made Status",
+       y = "Count",
+       x = "Age Cohort",
+       fill = "Self-Made Status")
+## , y = fct_reorder(c("Under 20", "Between 20 and 39", "Between 40 and 59", "Between 60 and 79", "Age 80 and Above", "NA")
+```
+
 
 ## Conclusion
 
