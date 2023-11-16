@@ -6,6 +6,8 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+## Introduction and Research Question
+
 In this project, I explore data about billionaires worldwide. 
 I am interested in understanding what factors differentiate the "nouveau riche" and billionaires who inherited their wealth. Some variables I explore include whether there are specific industries or regions that are more strongly correlated with inherited on self-earned wealth.
 
@@ -16,9 +18,16 @@ library(dplyr)
 library(ggplot2)
 library(infer)
 ```
+
+## Data (Source and Variables)
+
 ```{r, echo=FALSE}
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```
+
+
+## Results
+
 In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their avaerage net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.
 
 ```{r, echo=FALSE}
@@ -126,5 +135,11 @@ ggplot(data = billionaires,
   theme(axis.text.x = element_text(angle=45, hjust = 1)) +
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
+
+## Conclusion
+
+
+
+## Bibliography
 
 Source: https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset
