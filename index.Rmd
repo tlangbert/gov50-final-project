@@ -26,7 +26,7 @@ library(knitr)
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```
 
-A total of 2,640 billionaires worldwide are represented in this data. The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following variables:
+A total of 2,640 billionaires worldwide are represented in this data. The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following 35 variables:
 
 | Name           | Description                                               |
 |:---------------|:----------------------------------------------------------|
@@ -168,8 +168,6 @@ billionaires |>
 ```
 
 
-
-
 ```{r, echo = FALSE}
 # after install.packages("countrycode")
 library(countrycode)
@@ -228,7 +226,19 @@ billionaires |>
        y = "Count",
        x = "Age Cohort",
        fill = "Self-Made Status")
-## , y = fct_reorder(c("Under 20", "Between 20 and 39", "Between 40 and 59", "Between 60 and 79", "Age 80 and Above", "NA")
+```
+
+```{r, echo = FALSE}
+# figuring out most common countries
+country_counts <- billionaires |>
+  group_by(country) |>
+  summarise(count = n())
+
+sorted_countries <- country_counts[order(-country_counts$count), ]
+top_10_countries <- head(sorted_countries, 10)
+knitr::kable(top_10_countries,
+             col.names = c("Country", "Count"))
+
 ```
 
 
