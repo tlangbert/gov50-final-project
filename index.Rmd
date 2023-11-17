@@ -1,15 +1,16 @@
 ---
-title: "Who becomes a billionaire and why?"
+title: "Gov 50 Final Project"
 author: "Tosca Langbert"
-description: "Gov 50 Final Project"
+description: "Who Becomes a Billionaire? Why?"
 output:
   distill::distill_article:
     self_contained: false
 ---
 ## Introduction and Research Question
-
 In this project, I explore data about billionaires worldwide. 
-I am interested in understanding what factors differentiate the "nouveau riche" and billionaires who inherited their wealth. Some variables I explore include whether there are specific industries or regions that are more strongly correlated with inherited on self-earned wealth.
+I am interested in understanding what factors differentiate the "nouveau riche" from billionaires who inherited their wealth. 
+My research question is: to what extent can self-made status explain whether someone becomes a billionaire? Are there more powerful explanatory variables related to personal characteristics of the billionaire, like their gender or age? Or are their more circumstantial characteristics that can account for their wealth, like the industry they're in or their country of origin? How about something even more removed, like the tax rate or education rate of their country of origin?
+I hypothesize that circumstances of birth (e.g. someone's gender, or whether they inherited their wealth) will better explain who becomes a billionaire than more "distant" variables, like their country of origin's tax rate or education rate. 
 
 ```{r, echo=FALSE}
 # Setup chunk
@@ -95,7 +96,7 @@ ggplot(data = billionaires,
   scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
   labs(x = "Self-Made Status", 
        y = "Net Worth (in millions of dollars)", 
-       title = "Comparing the Net Worth of Self-Made vs. Not Self-Made Billionaires", 
+       title = "Comparing Billionaires' Net Worths by Self-Made Status", 
        fill = "Self-Made") +
   theme_linedraw() +
   scale_fill_manual(values = c("tan1", "lightblue1"))
@@ -111,32 +112,8 @@ billionaires |>
                              "Median Net Worth (in millions USD)",
                              "Net Worth Standard Dev."))
 ```
-```{r, echo = FALSE}
-ggplot(data = billionaires, 
-       aes(x = gender, 
-           y = finalWorth, 
-           fill = gender)) +
-  geom_boxplot() +
-  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
-  labs(x = "Gender", 
-       y = "Net Worth (in millions of dollars)", 
-       title = "Comparing the Net Worth of Billionaires by Gender",
-       fill = "Gender") +
-  theme_linedraw() +
-  scale_fill_manual(values = c("pink1", "lightblue3")) +
-  scale_x_discrete(labels = c("Female", "Male"))
-```
 
-```{r, echo=FALSE}
-billionaires |>
-  group_by(gender) |>
-  summarize(mean(finalWorth), median(finalWorth), sd(finalWorth)) |>
-  knitr::kable(digits = 2,
-               col.names = c("Gender", 
-                             "Average Net Worth (in millions USD)",
-                             "Median Net Worth (in millions USD",
-                             "Net Worth Standard Dev.")) 
-```
+Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher. 
 
 ```{r, echo = FALSE}
 ggplot(data = billionaires, 
@@ -153,6 +130,19 @@ ggplot(data = billionaires,
   theme_linedraw() +
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
+```{r, echo=FALSE}
+billionaires |>
+  group_by(gender) |>
+  summarize(mean(finalWorth), median(finalWorth), sd(finalWorth)) |>
+  knitr::kable(digits = 2,
+               col.names = c("Gender", 
+                             "Average Net Worth (in millions USD)",
+                             "Median Net Worth (in millions USD)",
+                             "Net Worth Standard Dev.")) 
+```
+
+However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.
+
 ```{r, echo = FALSE}
 billionaires |>
   ggplot(mapping = aes(x = gender, 
@@ -163,10 +153,11 @@ billionaires |>
   scale_x_discrete(labels = c("Female", "Male")) +
   labs(title = "Frequency of Billionaires by Gender and Self-Made Status",
        y = "Count",
-       x = "Age Cohort",
+       x = "Gender",
        fill = "Self-Made Status")
 ```
 
+It is also interesting to take a look at the geographic trends of where billionaires are from. Interestingly, over one fourth of the world's billionaires are in the United States, which represents only about 4% of the world's population. Only China comes close, with 20% of the world's billionaires and 18% of the world's population. In short, Americans are extremely overrepresented in the population of billionaires worldwide. 
 
 ```{r, echo = FALSE}
 # after install.packages("countrycode")
@@ -176,6 +167,19 @@ library(countrycode)
 billionaires <- billionaires |>
   mutate(continent = countrycode(country, "country.name", "continent"))
 ```
+
+```{r, echo = FALSE}
+# Determing top 14 countries with most billionaires
+country_counts <- billionaires |>
+  group_by(country) |>
+  summarise(count = n())
+
+sorted_countries <- country_counts[order(-country_counts$count), ]
+top_14_countries <- head(sorted_countries, 14)
+knitr::kable(top_14_countries,
+             col.names = c("Country", "Count"))
+```
+
 ```{r, echo = FALSE}
 ggplot(data = billionaires, 
        aes(x = continent, 
@@ -185,7 +189,7 @@ ggplot(data = billionaires,
   scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
   labs(x = "Self-Made Status", 
        y = "Net Worth (in millions of dollars)", 
-       title = "Comparing Self-Made and Not Self-Made Billionaires by Continent", 
+       title = "Comparing Billionaires' Net Worths by Continent & Self-Made Status", 
        fill = "Self-Made") +
   theme_linedraw() +
   scale_fill_manual(values = c("tan1", "lightblue1"))
@@ -228,24 +232,34 @@ billionaires |>
        fill = "Self-Made Status")
 ```
 
-```{r, echo = FALSE}
-# figuring out most common countries
-country_counts <- billionaires |>
-  group_by(country) |>
-  summarise(count = n())
-
-sorted_countries <- country_counts[order(-country_counts$count), ]
-top_14_countries <- head(sorted_countries, 14)
-knitr::kable(top_14_countries,
-             col.names = c("Country", "Count"))
-
-```
-
-
 ## Conclusion
 
 
 
 ## Bibliography
 
-Source: https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset
+Source: https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset, r package "countrycode"
+
+
+```{r, echo = FALSE, eval = FALSE}
+# Archive of data visualizations I didn't want to use
+
+
+
+
+# Retiring this barplot of self-made status/gender/net worth because I don't want to use it anymore!
+# ggplot(data = billionaires, 
+#       aes(x = gender, 
+#           y = finalWorth, 
+#           fill = gender)) +
+#  geom_boxplot() +
+#  scale_y_log10(labels = scales::dollar_format(prefix = "$")) + 
+#  labs(x = "Gender", 
+#       y = "Net Worth (in millions of dollars)", 
+#       title = "Comparing the Net Worth of Billionaires by Gender",
+#       fill = "Gender") +
+#  theme_linedraw() +
+#  scale_fill_manual(values = c("pink1", "lightblue3")) +
+#  scale_x_discrete(labels = c("Female", "Male"))
+```
+
