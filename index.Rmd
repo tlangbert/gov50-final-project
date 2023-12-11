@@ -87,14 +87,19 @@ The resulting data file for this study is `Billionaires Statistics Dataset.csv`,
 | `latitude_country`   | Latitude coordinate of the billionaire's country. |
 | `longitude_country`   | Longitude coordinate of the billionaire's country. |
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, print=FALSE}
 # Calculate median final worth of the billionaires
 median_finalWorth <- median(billionaires$finalWorth)
+print(median_finalWorth)
+mean_finalWorth <- mean(billionaires$finalWorth)
+print(mean_finalWorth)
 
 # Need to find a nice way to print this
 billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
 cat(billionaires_aggregate_wealth)
+```
 
+```{r, echo=FALSE}
 # Distribution of net worth
 ggplot(data = billionaires,
        mapping = aes(x = finalWorth)) +
@@ -105,38 +110,47 @@ ggplot(data = billionaires,
        y = "Count") +
  # Adding a vertical line at Elon Musk's net worth ($180 billion!)
   geom_vline(xintercept = 180000, 
-           linetype = "dashed", color = "lightblue2", 
-           size = 1, alpha = 0.7) +
+           linetype = "dashed", color = "darkgreen", 
+           size = .2, alpha = 0.7) +
   # Adding a text label for Elon Musk's net worth
   annotate("text", x = 180000, y = 30, 
-           label = "Elon Musk's Net Worth ($180b)", color = "lightblue2", 
-           angle = 90, vjust = -0.5) +
+           label = "Elon Musk's Net Worth ($180b)", color = "darkgreen", 
+           angle = 90, vjust = -1.5, size = 2, hjust = -0.5) +
   # Adding a vertical line at MacKenzie Scott's net worth ($24,400,000,000 billion!)
   geom_vline(xintercept = 24400, 
-           linetype = "dashed", color = "lightblue2", 
-           size = 1, alpha = 0.7) +
+           linetype = "dashed", color = "darkgreen", 
+           size = .2, alpha = 0.7) +
   # Adding a text label for MacKenzie Scott's net worth
   annotate("text", x = 24400, y = 30, 
-           label = "MacKenzie Scott's Net Worth ($24.4b)", color = "lightblue2", 
-           angle = 90, vjust = -0.5) +
+           label = "MacKenzie Scott's Net Worth ($24.4b)", color = "darkgreen", 
+           angle = 90, vjust = -1.5, size = 2, hjust = -0.5) +
   # Adding a vertical line at Jeff Bezos's net worth ($114,400,000,000 billion)
   geom_vline(xintercept = 114000, 
-           linetype = "dashed", color = "lightblue2", 
-           size = 1, alpha = 0.7) +
+           linetype = "dashed", color = "darkgreen", 
+           size = .2, alpha = 0.7) +
   # Adding a text label for Jeff Bezos's net worth
   annotate("text", x = 114000, y = 30, 
-           label = "Jeff Bezos's Net Worth ($114b)", color = "lightblue2", 
-           angle = 90, vjust = -0.5) +
+           label = "Jeff Bezos's Net Worth ($114b)", color = "darkgreen", size = 2, 
+           angle = 90, vjust = -1.5, size = 2, hjust = -0.5) +
    # Adding a vertical line at the median
   geom_vline(xintercept = median_finalWorth, 
-             linetype = "dashed", color = "tan2", 
-             size = 1, alpha = 0.7) +
+             linetype = "dashed", color = "darkred", 
+             size = .2, alpha = 0.7) +
   # Adding a text label for the median
   annotate("text", x = median_finalWorth, y = 30, 
-           label = "Median", color = "tan2", 
-           angle = 90, vjust = -0.5)
+           label = "Median ($2.3b)", color = "darkred", size = 2, 
+           angle = 90, vjust = 1.5, size = 2, hjust = -2) +
+  # Adding a vertical line at the mean
+  geom_vline(xintercept = mean_finalWorth, 
+             linetype = "dashed", color = "darkred", 
+             size = .2, alpha = 0.7) +
+  # Adding a text label for the mean
+  annotate("text", x = mean_finalWorth, y = 30, 
+           label = "Mean ($4.6b)", color = "darkred", size = 2, 
+           angle = 90, vjust = -1.5, size = 2, hjust = -2)
 ```
-
+Above is a histogram visualizing the frequency of the main outcome of interest: the different net worths ('finalWorth') of the billionaires. To help contextualize the values, I added in the median net worth of all of the billionaires, as well as the individual net worths of MacKenzie Scott (Jeff Bezos' former wife), Jeff Bezos himself, and Elon Musk. 
+The median net worth of all of the billionaires is approximately $2.3 billion.
 
 ## Results
 
