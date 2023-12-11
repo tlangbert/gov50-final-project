@@ -83,7 +83,7 @@ billionaires <- billionaires |>
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
 billionaires_aggregate_wealth
 ```
