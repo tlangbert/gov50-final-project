@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Billionaires Statistics Dataset.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-11-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-13-1.png","index_files/figure-html5/unnamed-chunk-14-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/figure-html5/unnamed-chunk-9-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Billionaires Statistics Dataset.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-11-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-13-1.png","index_files/figure-html5/unnamed-chunk-14-1.png","index_files/figure-html5/unnamed-chunk-15-1.png","index_files/figure-html5/unnamed-chunk-16-1.png","index_files/figure-html5/unnamed-chunk-17-1.png","index_files/figure-html5/unnamed-chunk-18-1.png","index_files/figure-html5/unnamed-chunk-19-1.png","index_files/figure-html5/unnamed-chunk-20-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/figure-html5/unnamed-chunk-9-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1526,7 +1526,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world’s total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world’s total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.</p>
 <p>In this project, I take a look at the wealthiest slice of people: billionaires. The approximately 3,000 billionaires worldwide, as I can conservatively estimate using my dataset, commanded $12.2 trillion USD as a group in 2022.</p>
 <p>Specifically, I am concerned with what differentiates the “nouveau riche” from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?</p>
-<p>I hypothesize that circumstances of birth (e.g. someone’s gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more “distant” variables, like their country of origin’s tax rate or education rate.</p>
+<p>The null hypotheses I will test are:
+1. Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.
+2. Country population or GDP is not statistically significant predictors of billionaire net worth.
+3. Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.</p>
+<p>I personally hypothesize that circumstances of birth (e.g. age and gender) will be statistically significant predictors of billionaire net worth, while more “distant” factors like the GDP or population of the country of origin will not be statistically significant.</p>
 <p>This research is important because it may better-inform both reader understanding and policy interventions regarding the worldwide concentration of wealth. For instance, what if such concentrated wealth remains so concentrated through inheritance, marriage, and divorce rather than entrepreneurship, education rates, or tax rates? If that’s the case, then spreading the benefits of such concentrated wealth to the public would involve taxing those life events to some extent. In contrast, if wealth remains concentrated because those who make it big have benefited from living in a well-educated country or from specific tax advantages, that would direct policymakers to intervene elsewhere.</p>
 <h2 id="data-sources-and-variables">Data (Sources and Variables)</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -1535,8 +1539,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>The author of the original dataset, who published it to Kaggle for public use, cites Forbes and other financial publications as the sources for his dataset. A total of 2,640 billionaires worldwide are represented in this data.</p>
 <p>In addition, I merged the dataset ‘countrycode’ so that I could create a variable representing the continent of the billionaire (‘continent’), in the hopes of better understanding the geographical origins of concentrated wealth.</p>
 <p>It is extremely important to note the experimental design of my analysis. Obviously, it is not possible to randomly assign whether an individual becomes a billionaire or not (there’s no world in which researchers could ethically assign one identical twin to be adopted by a ‘normal’ family, and the other twin to be adopted by an extraordinarily wealthy family).</p>
-<p>However, we can see that there are still differences among billionaires themselves. Being a billionaire is an arbitrary cutoff point between $999,999,999 and $1,000,000,001 USD.</p>
-<p>The resulting data file for this study is <code>Billionaires Statistics Dataset.csv</code>, which I simplified to ‘billionaires’. It contains the following 36 variables:</p>
+<p>However, we can see that there are still differences among billionaires themselves. Being a billionaire is an arbitrary cutoff point between $999,999,999 and $1,000,000,001 USD. This means I am using a cross-sectional design; there is no before-and-after component to my research. Instead, I am comparing the “control” group of those who inherited their wealth with those who are self-made (and thereby “treated” because they didn’t inherit their wealth).</p>
+<p>The data file for this study is <code>Billionaires Statistics Dataset.csv</code>, which I simplified to ‘billionaires’. It contains the following 36 variables:</p>
 <table>
 <colgroup>
 <col style="width: 21%" />
@@ -1698,18 +1702,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] 2300</code></pre>
 <pre><code>[1] 4623.788</code></pre>
-<pre><code>12206800</code></pre>
+<pre><code>[1] 12206800</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
-<p>Above is a histogram visualizing the frequency of the main outcome of interest: the different net worths (‘finalWorth’) of the billionaires. To help contextualize the values, I added in the median net worth of all of the billionaires, as well as the individual net worths of MacKenzie Scott (Jeff Bezos’ former wife), Jeff Bezos himself, and Elon Musk.
+<p>Above is a histogram visualizing the frequency of the main outcome of interest: the net worth (‘finalWorth’) distribution of the billionaires. To help contextualize the values, I added in the median net worth of all of the billionaires in the dataset, as well as the individual net worths of Jeff Bezos, MacKenzie Scott (Jeff Bezos’ former wife, who became a billionaire following their divorce), and Elon Musk.
 The median net worth of all of the billionaires is approximately $2.3 billion.</p>
 <h2 id="results">Results</h2>
-<p>In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their average net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
-</div>
+<p>As a reminder, these are the null hypotheses I tested.
+1. Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.
+2. Country population or GDP is not statistically significant predictors of billionaire net worth.
+3. Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.</p>
+<p>To address the first null hypothesis, I first compared the average net worth of self-made and non-self-made billionaires. There is a marked difference: the typical self-made billionaire can expect to have a net worth approximately $505 million USD lower than that of their counterparts with inherited wealth.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <thead>
@@ -1760,64 +1765,94 @@ TRUE
 </tbody>
 </table>
 </div>
-<p>Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
+<p>Then, I ran a regression to quantify the statistic significance of these differences.</p>
 <div class="layout-chunk" data-layout="l-body">
-<table>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-Gender
 </th>
-<th style="text-align:right;">
-Average Net Worth (in millions USD)
-</th>
-<th style="text-align:right;">
-Median Net Worth (in millions USD)
-</th>
-<th style="text-align:right;">
-Net Worth Standard Dev.
+<th style="text-align:center;">
+ (1)
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-F
+(Intercept)
 </td>
-<td style="text-align:right;">
-4570.33
-</td>
-<td style="text-align:right;">
-2500
-</td>
-<td style="text-align:right;">
-7612.48
+<td style="text-align:center;">
+4970.411
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-M
 </td>
-<td style="text-align:right;">
-4631.61
+<td style="text-align:center;">
+s.e. = 341.731
 </td>
-<td style="text-align:right;">
-2300
+</tr>
+<tr>
+<td style="text-align:left;">
 </td>
-<td style="text-align:right;">
-10119.86
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+selfMadeTRUE
+</td>
+<td style="text-align:center;">
+−505.013
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 412.484
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = 0.221
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2640
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.000
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
-</div>
+<p>Just as the box plot above demonstrated, being self-made equates to an approximate $505 million decrease in net worth (as shown by the coefficient on the variable selfMadeTRUE). However, even with a generous <span class="math inline">\(\alpha\)</span> = 0.1, the p-value of 0.221 is not statistically significant, so we cannot reject the null hypothesis that there’s no difference in net worth between self-made and not-self-made billionaires.</p>
 <p>It is also interesting to take a look at the geographic trends of where billionaires are from. Interestingly, over one fourth of the world’s billionaires are in the United States, which represents only about 4% of the world’s population. Only China comes close, with 20% of the world’s billionaires and 18% of the world’s population. In short, Americans are extremely overrepresented in the population of billionaires worldwide.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -1948,13 +1983,518 @@ Canada
 </table>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>To address the second hypothesis, regarding geographic origins, I examined a number of factors.</p>
+<p>It is also interesting to take a look at the geographic trends of where billionaires are from.First, to visualize where the majority of billionaires live, I generated a count of the top 14 countries where billionaires live. In total, almost two-thirds of the world’s billionaires lived in these countries.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Country
+</th>
+<th style="text-align:right;">
+Count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:right;">
+754
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+523
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+102
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+United Kingdom
+</td>
+<td style="text-align:right;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Russia
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Switzerland
+</td>
+<td style="text-align:right;">
+78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hong Kong
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Singapore
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brazil
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Australia
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Taiwan
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Canada
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Over one fourth of the dataset’s billionaires are in the United States, which represents only about 4% of the world’s population. Only China comes close, with 20% of the world’s billionaires and 18% of the world’s population. In short, Americans are far overrepresented in the population of billionaires worldwide.
+To further examine this point, I ran a regression to test the relationship between net worth and country of origin (which is much too large to print). Of the top 14 countries, only one was statistically significant at a p-value of <span class="math inline">\(\alpha\)</span> = 0.1: the United States, with a p-value of p = 0.025.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+4613.168
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 429.692
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+in_top14TRUE
+</td>
+<td style="text-align:center;">
+13.250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 479.956
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = 0.978
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2640
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+4289.312
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 295.909
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+in_top4TRUE
+</td>
+<td style="text-align:center;">
+574.881
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 387.940
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = 0.138
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2640
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+4882.353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 2390.410
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentAmericas
+</td>
+<td style="text-align:center;">
+947.213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 2413.493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.695
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentAsia
+</td>
+<td style="text-align:center;">
+−1311.547
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 2409.167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.586
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentEurope
+</td>
+<td style="text-align:center;">
+55.596
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 2424.894
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.982
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continentOceania
+</td>
+<td style="text-align:center;">
+−802.353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 2805.834
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = 0.775
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+2602
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<p>Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+Average Net Worth (in millions USD)
+</th>
+<th style="text-align:right;">
+Median Net Worth (in millions USD)
+</th>
+<th style="text-align:right;">
+Net Worth Standard Dev.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+4570.33
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+7612.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+4631.61
+</td>
+<td style="text-align:right;">
+2300
+</td>
+<td style="text-align:right;">
+10119.86
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<p>However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
 </div>
 <h2 id="running-regressions-with-net-worth-and-explanatory-variables">Running regressions with net worth and explanatory variables</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2245,96 +2785,6 @@ R2 Adj.
 # ℹ 4 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;,
 #   nobs &lt;int&gt;</code></pre>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
- (1)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-4970.411
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 341.731
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = &lt;0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-selfMadeTRUE
-</td>
-<td style="text-align:center;">
-−505.013
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 412.484
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-p = 0.221
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-2640
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2
-</td>
-<td style="text-align:center;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2 Adj.
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-</tbody>
-</table>
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df  logLik    AIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-1  0.000568      0.000189 9833.      1.50   0.221     1 -28016. 56038.
-# ℹ 4 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;,
-#   nobs &lt;int&gt;</code></pre>
-</div>
-<p>This is interesting because it indicates that although being self-made is more common, it’s not statistically significant when it comes to net worth!</p>
 <h2 id="conclusion">Conclusion</h2>
 <h2 id="bibliography-incomplete">Bibliography (incomplete)</h2>
 <p><a href="https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset" class="uri">https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset</a>
@@ -2345,7 +2795,7 @@ r package “countrycode”
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2353,6 +2803,15 @@ r package “countrycode”
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

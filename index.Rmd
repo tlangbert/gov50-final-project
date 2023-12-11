@@ -25,7 +25,12 @@ In this project, I take a look at the wealthiest slice of people: billionaires. 
 
 Specifically, I am concerned with what differentiates the "nouveau riche" from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?
 
-I hypothesize that circumstances of birth (e.g. someone's gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more "distant" variables, like their country of origin's tax rate or education rate. 
+The null hypotheses I will test are:
+1. Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.
+2. Country population or GDP is not statistically significant predictors of billionaire net worth.
+3. Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.
+
+I personally hypothesize that circumstances of birth (e.g. age and gender) will be statistically significant predictors of billionaire net worth, while more "distant" factors like the GDP or population of the country of origin will not be statistically significant.
 
 This research is important because it may better-inform both reader understanding and policy interventions regarding the worldwide concentration of wealth. For instance, what if such concentrated wealth remains so concentrated through inheritance, marriage, and divorce rather than entrepreneurship, education rates, or tax rates? If that's the case, then spreading the benefits of such concentrated wealth to the public would involve taxing those life events to some extent. In contrast, if wealth remains concentrated because those who make it big have benefited from living in a well-educated country or from specific tax advantages, that would direct policymakers to intervene elsewhere.  
 
@@ -44,9 +49,9 @@ In addition, I merged the dataset 'countrycode' so that I could create a variabl
 
 It is extremely important to note the experimental design of my analysis. Obviously, it is not possible to randomly assign whether an individual becomes a billionaire or not (there's no world in which researchers could ethically assign one identical twin to be adopted by a 'normal' family, and the other twin to be adopted by an extraordinarily wealthy family). 
 
-However, we can see that there are still differences among billionaires themselves. Being a billionaire is an arbitrary cutoff point between $999,999,999 and $1,000,000,001 USD. 
+However, we can see that there are still differences among billionaires themselves. Being a billionaire is an arbitrary cutoff point between $999,999,999 and $1,000,000,001 USD. This means I am using a cross-sectional design; there is no before-and-after component to my research. Instead, I am comparing the "control" group of those who inherited their wealth with those who are self-made (and thereby "treated" because they didn't inherit their wealth).
 
-The resulting data file for this study is `Billionaires Statistics Dataset.csv`, which I simplified to 'billionaires'. It contains the following 36 variables:
+The data file for this study is `Billionaires Statistics Dataset.csv`, which I simplified to 'billionaires'. It contains the following 36 variables:
 
 | Name           | Description                                               |
 |:---------------|:----------------------------------------------------------|
@@ -91,12 +96,14 @@ The resulting data file for this study is `Billionaires Statistics Dataset.csv`,
 # Calculate median final worth of the billionaires
 median_finalWorth <- median(billionaires$finalWorth)
 print(median_finalWorth)
+
+# Calculate mean final worth of the billionaires
 mean_finalWorth <- mean(billionaires$finalWorth)
 print(mean_finalWorth)
 
-# Need to find a nice way to print this
+# Calculate aggregate wealth owned by the billionaires
 billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
-cat(billionaires_aggregate_wealth)
+print(billionaires_aggregate_wealth)
 ```
 
 ```{r, echo=FALSE}
@@ -149,27 +156,17 @@ ggplot(data = billionaires,
            label = "Mean ($4.6b)", color = "darkred", size = 2, 
            angle = 90, vjust = -1.5, size = 2, hjust = -2)
 ```
-Above is a histogram visualizing the frequency of the main outcome of interest: the different net worths ('finalWorth') of the billionaires. To help contextualize the values, I added in the median net worth of all of the billionaires, as well as the individual net worths of MacKenzie Scott (Jeff Bezos' former wife), Jeff Bezos himself, and Elon Musk. 
+Above is a histogram visualizing the frequency of the main outcome of interest: the net worth ('finalWorth') distribution of the billionaires. To help contextualize the values, I added in the median net worth of all of the billionaires in the dataset, as well as the individual net worths of Jeff Bezos, MacKenzie Scott (Jeff Bezos' former wife, who  became a billionaire following their divorce), and Elon Musk. 
 The median net worth of all of the billionaires is approximately $2.3 billion.
 
 ## Results
+As a reminder, these are the null hypotheses I tested.
+1. Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.
+2. Country population or GDP is not statistically significant predictors of billionaire net worth.
+3. Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.
 
-In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their average net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.
+To address the first null hypothesis, I first compared the average net worth of self-made and non-self-made billionaires. There is a marked difference: the typical self-made billionaire can expect to have a net worth approximately $505 million USD lower than that of their counterparts with inherited wealth. 
 
-```{r, echo=FALSE}
-ggplot(data = billionaires, 
-       aes(x = selfMade, 
-           y = finalWorth, 
-           fill = selfMade)) +
-  geom_boxplot() +
-  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
-  labs(x = "Self-Made Status", 
-       y = "Net Worth (in millions of dollars)", 
-       title = "Comparing Billionaires' Net Worths by Self-Made Status", 
-       fill = "Self-Made") +
-  theme_linedraw() +
-  scale_fill_manual(values = c("tan1", "lightblue1"))
-```
 
 ```{r, echo=FALSE}
 billionaires |>
@@ -182,49 +179,34 @@ billionaires |>
                              "Net Worth Standard Dev."))
 ```
 
-Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher. 
-
-```{r, echo = FALSE}
+```{r, echo=FALSE}
 ggplot(data = billionaires, 
-       aes(x = gender, 
+       aes(x = selfMade, 
            y = finalWorth, 
            fill = selfMade)) +
   geom_boxplot() +
-  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
-  labs(x = "Gender", 
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  
+  labs(x = "Self-Made Status", 
        y = "Net Worth (in millions of dollars)", 
-       title = "Comparing the Net Worth of Billionaires by Gender and Self-Made Status", 
+       title = "Comparing Billionaires' Net Worths by Self-Made Status", 
        fill = "Self-Made") +
-  scale_x_discrete(labels = c("Female", "Male")) +
   theme_linedraw() +
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
+
+Then, I ran a regression to quantify the statistic significance of these differences.
+
 ```{r, echo=FALSE}
-billionaires |>
-  group_by(gender) |>
-  summarize(mean(finalWorth), median(finalWorth), sd(finalWorth)) |>
-  knitr::kable(digits = 2,
-               col.names = c("Gender", 
-                             "Average Net Worth (in millions USD)",
-                             "Median Net Worth (in millions USD)",
-                             "Net Worth Standard Dev.")) 
+# Running a regression of net worth and self-made status ('fit_billionaire_selfMade')
+fit_billionaire_selfMade <- lm(finalWorth ~ selfMade, data = billionaires)
+modelsummary::modelsummary(fit_billionaire_selfMade,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared",
+                                       "adj.r.squared"))
 ```
 
-However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.
-
-```{r, echo = FALSE}
-billionaires |>
-  ggplot(mapping = aes(x = gender, 
-                       fill = selfMade)) +
-  geom_bar(position = "dodge") +
-  theme_minimal() +
-  scale_fill_manual(values = c("tan1", "lightblue1")) +
-  scale_x_discrete(labels = c("Female", "Male")) +
-  labs(title = "Frequency of Billionaires by Gender and Self-Made Status",
-       y = "Count",
-       x = "Gender",
-       fill = "Self-Made Status")
-```
+Just as the box plot above demonstrated, being self-made equates to an approximate $505 million decrease in net worth (as shown by the coefficient on the variable selfMadeTRUE). However, even with a generous $\alpha$ = 0.1, the p-value of 0.221 is not statistically significant, so we cannot reject the null hypothesis that there's no difference in net worth between self-made and not-self-made billionaires. 
 
 It is also interesting to take a look at the geographic trends of where billionaires are from. Interestingly, over one fourth of the world's billionaires are in the United States, which represents only about 4% of the world's population. Only China comes close, with 20% of the world's billionaires and 18% of the world's population. In short, Americans are extremely overrepresented in the population of billionaires worldwide. 
 
@@ -255,21 +237,160 @@ ggplot(data = billionaires,
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
 
+To address the second hypothesis, regarding geographic origins, I examined a number of factors.
+
+It is also interesting to take a look at the geographic trends of where billionaires are from.First, to visualize where the majority of billionaires live, I generated a count of the top 14 countries where billionaires live. In total, almost two-thirds of the world's billionaires lived in these countries. 
+
+```{r, echo = FALSE}
+# Determing top 14 countries with most billionaires
+country_counts <- billionaires |>
+  group_by(country) |>
+  summarise(count = n())
+
+sorted_countries <- country_counts[order(-country_counts$count), ]
+top_14_countries <- head(sorted_countries, 14)
+knitr::kable(top_14_countries,
+             col.names = c("Country", "Count"))
+```
+
+Over one fourth of the dataset's billionaires are in the United States, which represents only about 4% of the world's population. Only China comes close, with 20% of the world's billionaires and 18% of the world's population. In short, Americans are far overrepresented in the population of billionaires worldwide.
+To further examine this point, I ran a regression to test the relationship between net worth and country of origin (which is much too large to print). Of the top 14 countries, only one was statistically significant at a p-value of $\alpha$ = 0.1: the United States, with a p-value of p = 0.025. 
+```{r, echo=FALSE, include=FALSE}
+# Running a regression of country residence and net worth
+fit_billionaire_country <- lm(finalWorth ~ country, data = billionaires)
+
+modelsummary::modelsummary(fit_billionaire_country,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared",
+                                       "adj.r.squared"))
+
+# Running a regression of country residence and net worth
+fit_billionaire_country <- lm(finalWorth ~ country, data = billionaires)
+# Get the summary of the regression model
+summary_fit <- summary(fit_billionaire_country)
+# Extract the p-values for each coefficient
+p_values <- summary_fit$coefficients[, "Pr(>|t|)"]
+# Set alpha
+alpha <- 0.1
+# Filter countries based on the p-values
+significant_countries <- names(p_values[p_values < alpha])
+# Display the significant countries
+print(significant_countries)
+```
+
+
+```{r, echo=FALSE}
+# Creating top 14 country subset
+top14_countries <- c("United States", "China", "India", "Germany", "United Kingdom", "Russia", "Switzerland", "Hong Kong", "Italy", "Singapore", "Brazil", "Australia", "Taiwan", "Canada")
+
+# Creating a binary variable indicating whether the country is in the top 14
+billionaires$in_top14 <- billionaires$country %in% top14_countries
+
+# Running a regression of top 14 country residence and net worth
+fit_billionaire_top14country <- lm(finalWorth ~ in_top14, data = billionaires)
+
+modelsummary::modelsummary(fit_billionaire_top14country,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared",
+                                       "adj.r.squared"))
+
+```
+
+```{r, echo=FALSE}
+# Creating top 4 country subset
+top4_countries <- c("United States", "China", "India", "Germany")
+
+# Creating a binary variable indicating whether the country is in the top 4
+billionaires$in_top4 <- billionaires$country %in% top4_countries
+
+# Running a regression of top 4 country residence and net worth
+fit_billionaire_top4country <- lm(finalWorth ~ in_top4, data = billionaires)
+
+modelsummary::modelsummary(fit_billionaire_top4country,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared",
+                                       "adj.r.squared"))
+
+```
+
+```{r, echo=FALSE}
+# Running a regression of continent and net worth
+fit_billionaire_continent <- lm(finalWorth ~ continent, data = billionaires)
+
+modelsummary::modelsummary(fit_billionaire_continent,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared",
+                                       "adj.r.squared"))
+
+```
+
 ```{r, echo = FALSE}
 ggplot(data = billionaires, 
-       aes(x = reorder(industries, -finalWorth, FUN = median),
+       aes(x = continent, 
            y = finalWorth, 
            fill = selfMade)) +
   geom_boxplot() +
-  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +
-  labs(x = "Industry of Billionaire", 
-       y = "Net Worth of Billionaire (in millions of dollars)", 
-       title = "Comparing Billionaire Net Worth by Industry & Self-Made Status", 
-       fill = "Self-Made Status") +
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
+  labs(x = "Self-Made Status", 
+       y = "Net Worth (in millions of dollars)", 
+       title = "Comparing Billionaires' Net Worths by Continent & Self-Made Status", 
+       fill = "Self-Made") +
   theme_linedraw() +
-  theme(axis.text.x = element_text(angle=45, hjust = 1)) +
   scale_fill_manual(values = c("tan1", "lightblue1"))
 ```
+
+
+
+
+Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher. 
+
+```{r, echo=FALSE}
+billionaires |>
+  group_by(gender) |>
+  summarize(mean(finalWorth), median(finalWorth), sd(finalWorth)) |>
+  knitr::kable(digits = 2,
+               col.names = c("Gender", 
+                             "Average Net Worth (in millions USD)",
+                             "Median Net Worth (in millions USD)",
+                             "Net Worth Standard Dev.")) 
+```
+```{r, echo = FALSE}
+ggplot(data = billionaires, 
+       aes(x = gender, 
+           y = finalWorth, 
+           fill = selfMade)) +
+  geom_boxplot() +
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
+  labs(x = "Gender", 
+       y = "Net Worth (in millions of dollars)", 
+       title = "Comparing Billionaires' Net Worth by Gender & Self-Made Status", 
+       fill = "Self-Made") +
+  scale_x_discrete(labels = c("Female", "Male")) +
+  theme_linedraw() +
+  scale_fill_manual(values = c("tan1", "lightblue1"))
+```
+
+However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.
+
+```{r, echo = FALSE}
+billionaires |>
+  ggplot(mapping = aes(x = gender, 
+                       fill = selfMade)) +
+  geom_bar(position = "dodge") +
+  theme_minimal() +
+  scale_fill_manual(values = c("tan1", "lightblue1")) +
+  scale_x_discrete(labels = c("Female", "Male")) +
+  labs(title = "Frequency of Billionaires by Gender and Self-Made Status",
+       y = "Count",
+       x = "Gender",
+       fill = "Self-Made Status")
+```
+
+
 
 ```{r, echo = FALSE}
 billionaires |>
@@ -314,20 +435,10 @@ modelsummary::modelsummary(fit_billionaire_age,
                                        "adj.r.squared"))
 glance(fit_billionaire_age)
 ```
-```{r, echo=FALSE}
-# Running a regression of net worth and self-made status ('fit_billionaire_selfMade')
-fit_billionaire_selfMade <- lm(finalWorth ~ selfMade, data = billionaires)
-modelsummary::modelsummary(fit_billionaire_selfMade,
-                           statistic = c("s.e. = {std.error}",
-                                         "p = {p.value}"),
-                           gof_map = c("nobs", "r.squared",
-                                       "adj.r.squared"))
-glance(fit_billionaire_selfMade)
-```
-This is interesting because it indicates that although being self-made is more common, it's not statistically significant when it comes to net worth!
+
 
 ## Conclusion
-
+One major limitation to this cross-sectional design is that it assumes that control and treatment groups are identical on average. However, it goes without saying that billionaires cannot be assumed to be representative of the world population at large. 
 
 
 ## Bibliography (incomplete)
