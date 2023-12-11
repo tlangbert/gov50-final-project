@@ -8,13 +8,20 @@ output:
 ---
 ## Introduction and Research Question
 
-There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world's total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world's total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade. 
+There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world's total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world's total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.
 
-In this project, I explore data about billionaires worldwide. 
-Specifically, I am interested in understanding what factors differentiate the "nouveau riche" from billionaires who inherited their wealth. 
-My research question is: to what extent can self-made status explain whether someone becomes a billionaire? Are there more powerful explanatory variables related to personal characteristics of the billionaire, like their gender or age? Or are their more circumstantial characteristics that can account for their wealth, like the industry they're in or their country of origin? How about something even more removed, like the tax rate or education rate of their country of origin?
-I hypothesize that circumstances of birth (e.g. someone's gender, or whether they inherited their wealth) will better explain who becomes a billionaire than more "distant" variables, like their country of origin's tax rate or education rate. 
+```{r, echo=FALSE}
+billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
+billionaires_aggregate_wealth
+```
 
+In this project, I take a look at the wealthiest slice of people: billionaires. The approximately 3,000 billionaires worldwide, as I can conservatively estimate using my dataset, commanded $12.2 trillion USD as a group in 2022.
+
+Specifically, I am concerned with what differentiates the "nouveau riche" from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?
+
+I hypothesize that circumstances of birth (e.g. someone's gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more "distant" variables, like their country of origin's tax rate or education rate. 
+
+## Data (Sources and Variables)
 ```{r, echo=FALSE}
 # Setup chunk
 library(tidyverse)
@@ -24,11 +31,6 @@ library(infer)
 library(knitr)
 library(broom)
 library(modelsummary)
-```
-
-## Data (Sources and Variables)
-
-```{r, echo=FALSE}
 billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 ```
 It's important to note that this dataset is current as of 2022, not 2023.
@@ -82,12 +84,6 @@ billionaires <- billionaires |>
   mutate(continent = countrycode(country, "country.name", "continent"))
 ```
 
-
-```{r, echo=FALSE}
-billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
-billionaires_aggregate_wealth
-```
-The aggregate wealth of the billionaires in the dataset is $12,206,800,000,000: a whopping $12.2 trillion USD. 
 
 ```{r, echo = FALSE}
 # Calculate median final worth of the billionaires
