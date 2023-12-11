@@ -1519,21 +1519,23 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
 <h2 id="introduction-and-research-question">Introduction and Research Question</h2>
 <p>There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world’s total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world’s total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.</p>
-<p>In this project, I explore data about billionaires worldwide.
-Specifically, I am interested in understanding what factors differentiate the “nouveau riche” from billionaires who inherited their wealth.
-My research question is: to what extent can self-made status explain whether someone becomes a billionaire? Are there more powerful explanatory variables related to personal characteristics of the billionaire, like their gender or age? Or are their more circumstantial characteristics that can account for their wealth, like the industry they’re in or their country of origin? How about something even more removed, like the tax rate or education rate of their country of origin?
-I hypothesize that circumstances of birth (e.g. someone’s gender, or whether they inherited their wealth) will better explain who becomes a billionaire than more “distant” variables, like their country of origin’s tax rate or education rate.</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre><code>[1] 12206800</code></pre>
 </div>
+<p>In this project, I take a look at the wealthiest slice of people: billionaires. The approximately 3,000 billionaires worldwide, as I can conservatively estimate using my dataset, commanded $12.2 trillion USD as a group in 2022.</p>
+<p>Specifically, I am concerned with what differentiates the “nouveau riche” from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?</p>
+<p>I hypothesize that circumstances of birth (e.g. someone’s gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more “distant” variables, like their country of origin’s tax rate or education rate.</p>
 <h2 id="data-sources-and-variables">Data (Sources and Variables)</h2>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
 <p>It’s important to note that this dataset is current as of 2022, not 2023.
-A total of 2,640 billionaires worldwide are represented in this data. The data file for this study is <code>Billionaires Statistics Dataset.csv</code> and contains the following 35 variables:</p>
+A total of 2,640 billionaires worldwide are represented in this data.</p>
+<p>[ MORE INFO HERE ABOUT THE PROVENANCE OF THE DATASET]</p>
+<p>In addition, I merged the dataset ‘countrycode’ so that I could create a variable representing the continent of the billionaire (‘continent’).</p>
+<p>The data file for this study is <code>Billionaires Statistics Dataset.csv</code> and contains the following 35 variables:</p>
 <table>
 <colgroup>
 <col style="width: 21%" />
@@ -1688,7 +1690,6 @@ A total of 2,640 billionaires worldwide are represented in this data. The data f
 </tr>
 </tbody>
 </table>
-In addition, I merged the dataset ‘countrycode’ so that I could create a variable representing the continent of the billionaire (‘continent’).
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -2335,7 +2336,7 @@ r package “countrycode”
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

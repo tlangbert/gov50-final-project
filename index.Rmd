@@ -6,6 +6,17 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+```{r, echo=FALSE}
+# Setup chunk
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(infer)
+library(knitr)
+library(broom)
+library(modelsummary)
+billionaires <- read.csv("Billionaires Statistics Dataset.csv")
+```
 ## Introduction and Research Question
 
 There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world's total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world's total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.
@@ -22,19 +33,14 @@ Specifically, I am concerned with what differentiates the "nouveau riche" from b
 I hypothesize that circumstances of birth (e.g. someone's gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more "distant" variables, like their country of origin's tax rate or education rate. 
 
 ## Data (Sources and Variables)
-```{r, echo=FALSE}
-# Setup chunk
-library(tidyverse)
-library(dplyr)
-library(ggplot2)
-library(infer)
-library(knitr)
-library(broom)
-library(modelsummary)
-billionaires <- read.csv("Billionaires Statistics Dataset.csv")
-```
 It's important to note that this dataset is current as of 2022, not 2023.
-A total of 2,640 billionaires worldwide are represented in this data. The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following 35 variables:
+A total of 2,640 billionaires worldwide are represented in this data. 
+
+[ MORE INFO HERE ABOUT THE PROVENANCE OF THE DATASET]
+
+In addition, I merged the dataset 'countrycode' so that I could create a variable representing the continent of the billionaire ('continent').
+
+The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following 35 variables:
 
 | Name           | Description                                               |
 |:---------------|:----------------------------------------------------------|
@@ -74,7 +80,6 @@ A total of 2,640 billionaires worldwide are represented in this data. The data f
 | `latitude_country`   | Latitude coordinate of the billionaire's country. |
 | `longitude_country`   | Longitude coordinate of the billionaire's country. |
 
-In addition, I merged the dataset 'countrycode' so that I could create a variable representing the continent of the billionaire ('continent').
 ```{r, echo = FALSE}
 # after install.packages("countrycode")
 library(countrycode)
@@ -104,7 +109,7 @@ ggplot(data = billionaires,
   # Adding a text label for Elon Musk's net worth
   annotate("text", x = 180000, y = 30, 
            label = "Elon Musk's Net Worth ($180b)", color = "lightblue2", 
-           angle = 90, vjust = -0.5, hjust = -0.65) +
+           angle = 90, vjust = -0.5) +
   # Adding a vertical line at MacKenzie Scott's net worth ($24,400,000,000 billion!)
   geom_vline(xintercept = 24400, 
            linetype = "dashed", color = "lightblue2", 
@@ -112,7 +117,7 @@ ggplot(data = billionaires,
   # Adding a text label for MacKenzie Scott's net worth
   annotate("text", x = 24400, y = 30, 
            label = "MacKenzie Scott's Net Worth ($24.4b)", color = "lightblue2", 
-           angle = 90, vjust = -0.5, hjust = -0.35) +
+           angle = 90, vjust = -0.5) +
   # Adding a vertical line at Jeff Bezos's net worth ($114,400,000,000 billion)
   geom_vline(xintercept = 114000, 
            linetype = "dashed", color = "lightblue2", 
@@ -120,7 +125,7 @@ ggplot(data = billionaires,
   # Adding a text label for Jeff Bezos's net worth
   annotate("text", x = 114000, y = 30, 
            label = "Jeff Bezos's Net Worth ($114b)", color = "lightblue2", 
-           angle = 90, vjust = -0.5, hjust = -0.63) +
+           angle = 90, vjust = -0.5) +
    # Adding a vertical line at the median
   geom_vline(xintercept = median_finalWorth, 
              linetype = "dashed", color = "tan2", 
@@ -128,7 +133,7 @@ ggplot(data = billionaires,
   # Adding a text label for the median
   annotate("text", x = median_finalWorth, y = 30, 
            label = "Median", color = "tan2", 
-           angle = 90, vjust = -0.5, hjust = -2.75)
+           angle = 90, vjust = -0.5)
 ```
 
 
