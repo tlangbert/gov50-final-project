@@ -1531,11 +1531,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Specifically, I am concerned with what differentiates the “nouveau riche” from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?</p>
 <p>I hypothesize that circumstances of birth (e.g. someone’s gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more “distant” variables, like their country of origin’s tax rate or education rate.</p>
 <h2 id="data-sources-and-variables">Data (Sources and Variables)</h2>
-<p>It’s important to note that this dataset is current as of 2022, not 2023.
-A total of 2,640 billionaires worldwide are represented in this data.</p>
 <p>[ MORE INFO HERE ABOUT THE PROVENANCE OF THE DATASET]</p>
 <p>In addition, I merged the dataset ‘countrycode’ so that I could create a variable representing the continent of the billionaire (‘continent’).</p>
-<p>The data file for this study is <code>Billionaires Statistics Dataset.csv</code> and contains the following 35 variables:</p>
+<p>It’s important to note that this dataset is current as of 2022, not 2023.
+A total of 2,640 billionaires worldwide are represented in this data.</p>
+<p>The data file for this study is <code>Billionaires Statistics Dataset.csv</code> and contains the following 36 variables:</p>
 <table>
 <colgroup>
 <col style="width: 21%" />
@@ -1569,122 +1569,126 @@ A total of 2,640 billionaires worldwide are represented in this data.</p>
 <td style="text-align: left;">The age of the billionaire.</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;"><code>continent</code></td>
+<td style="text-align: left;">Continent of origin of the billionaire</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;"><code>country</code></td>
 <td style="text-align: left;">The country in which the billionaire resides.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>city</code></td>
 <td style="text-align: left;">The city in which the billionaire resides.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>source</code></td>
 <td style="text-align: left;">The source of the billionaire’s wealth.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>industries</code></td>
 <td style="text-align: left;">The industries associated with the billionaire’s business interests.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>countryOfCitizenship</code></td>
 <td style="text-align: left;">The country of citizenship of the billionaire.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>organization</code></td>
 <td style="text-align: left;">The name of the organization or company associated with the billionaire.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>selfMade</code></td>
 <td style="text-align: left;">Indicates whether the billionaire is self-made (True/False).</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>status</code></td>
 <td style="text-align: left;">“D” represents self-made billionaires (Founders/Entrepreneurs) and “U” indicates inherited or unearned wealth.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>gender</code></td>
 <td style="text-align: left;">The gender of the billionaire.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>birthDate</code></td>
 <td style="text-align: left;">The birthdate of the billionaire.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>lastName</code></td>
 <td style="text-align: left;">The last name of the billionaire.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>firstName</code></td>
 <td style="text-align: left;">The first name of the billionaire.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>title</code></td>
 <td style="text-align: left;">The title or honorific of the billionaire.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>date</code></td>
 <td style="text-align: left;">The date of data collection.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>state</code></td>
 <td style="text-align: left;">The state in which the billionaire resides.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>residenceStateRegion</code></td>
 <td style="text-align: left;">The region or state of residence of the billionaire.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>birthYear</code></td>
 <td style="text-align: left;">The birth year of the billionaire.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>birthMonth</code></td>
 <td style="text-align: left;">The birth month of the billionaire.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>birthDay</code></td>
 <td style="text-align: left;">The birth day of the billionaire.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>cpi_country</code></td>
 <td style="text-align: left;">Consumer Price Index (CPI) for the billionaire’s country.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>cpi_change_country</code></td>
 <td style="text-align: left;">CPI change for the billionaire’s country.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>gdp_country</code></td>
 <td style="text-align: left;">Gross Domestic Product (GDP) for the billionaire’s country.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>gross_tertiary_education_enrollment</code></td>
 <td style="text-align: left;">Enrollment in tertiary education in the billionaire’s country.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>gross_primary_education_enrollment_country</code></td>
 <td style="text-align: left;">Enrollment in primary education in the billionaire’s country.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>life_expectancy_country</code></td>
 <td style="text-align: left;">Life expectancy in the billionaire’s country.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>tax_revenue_country_country</code></td>
 <td style="text-align: left;">Tax revenue in the billionaire’s country.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>total_tax_rate_country</code></td>
 <td style="text-align: left;">Total tax rate in the billionaire’s country.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>population_country</code></td>
 <td style="text-align: left;">Population of the billionaire’s country.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>latitude_country</code></td>
 <td style="text-align: left;">Latitude coordinate of the billionaire’s country.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>longitude_country</code></td>
 <td style="text-align: left;">Longitude coordinate of the billionaire’s country.</td>
 </tr>

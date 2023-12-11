@@ -33,14 +33,16 @@ Specifically, I am concerned with what differentiates the "nouveau riche" from b
 I hypothesize that circumstances of birth (e.g. someone's gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more "distant" variables, like their country of origin's tax rate or education rate. 
 
 ## Data (Sources and Variables)
-It's important to note that this dataset is current as of 2022, not 2023.
-A total of 2,640 billionaires worldwide are represented in this data. 
+
 
 [ MORE INFO HERE ABOUT THE PROVENANCE OF THE DATASET]
 
 In addition, I merged the dataset 'countrycode' so that I could create a variable representing the continent of the billionaire ('continent').
 
-The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following 35 variables:
+It's important to note that this dataset is current as of 2022, not 2023.
+A total of 2,640 billionaires worldwide are represented in this data. 
+
+The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following 36 variables:
 
 | Name           | Description                                               |
 |:---------------|:----------------------------------------------------------|
@@ -49,6 +51,7 @@ The data file for this study is `Billionaires Statistics Dataset.csv` and contai
 | `category`   | The category or industry in which the billionaire's business operates.  |
 | `personName`   | The full name of the billionaire. |
 | `age` | The age of the billionaire. |
+| `continent`  | Continent of origin of the billionaire. |
 | `country` | The country in which the billionaire resides. |
 | `city`    | The city in which the billionaire resides. |
 | `source`   | The source of the billionaire's wealth. |
