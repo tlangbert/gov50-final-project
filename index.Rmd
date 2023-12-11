@@ -83,6 +83,12 @@ billionaires <- billionaires |>
 ```
 
 
+```{r}
+billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
+billionaires_aggregate_wealth
+```
+The aggregate wealth of the billionaires in the dataset is $12,206,800,000,000: a whopping $12.2 trillion USD. 
+
 ```{r, echo = FALSE}
 # Calculate median final worth of the billionaires
 median_finalWorth <- median(billionaires$finalWorth)
