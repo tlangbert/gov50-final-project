@@ -21,28 +21,32 @@ billionaires <- read.csv("Billionaires Statistics Dataset.csv")
 
 There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world's total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world's total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.
 
-```{r, echo=FALSE}
-billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
-billionaires_aggregate_wealth
-```
-
 In this project, I take a look at the wealthiest slice of people: billionaires. The approximately 3,000 billionaires worldwide, as I can conservatively estimate using my dataset, commanded $12.2 trillion USD as a group in 2022.
 
 Specifically, I am concerned with what differentiates the "nouveau riche" from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?
 
 I hypothesize that circumstances of birth (e.g. someone's gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more "distant" variables, like their country of origin's tax rate or education rate. 
 
+This research is important because it may better-inform both reader understanding and policy interventions regarding the worldwide concentration of wealth. For instance, what if such concentrated wealth remains so concentrated through inheritance, marriage, and divorce rather than entrepreneurship, education rates, or tax rates? If that's the case, then spreading the benefits of such concentrated wealth to the public would involve taxing those life events to some extent. In contrast, if wealth remains concentrated because those who make it big have benefited from living in a well-educated country or from specific tax advantages, that would direct policymakers to intervene elsewhere.  
+
 ## Data (Sources and Variables)
+```{r, echo = FALSE}
+# after install.packages("countrycode")
+library(countrycode)
 
+# Add continent variable
+billionaires <- billionaires |>
+  mutate(continent = countrycode(country, "country.name", "continent"))
+```
+The author of the original dataset, who published it to Kaggle for public use, cites Forbes and other financial publications as the sources for his dataset. A total of 2,640 billionaires worldwide are represented in this data.
 
-[ MORE INFO HERE ABOUT THE PROVENANCE OF THE DATASET]
+In addition, I merged the dataset 'countrycode' so that I could create a variable representing the continent of the billionaire ('continent'), in the hopes of better understanding the geographical origins of concentrated wealth.
 
-In addition, I merged the dataset 'countrycode' so that I could create a variable representing the continent of the billionaire ('continent').
+It is extremely important to note the experimental design of my analysis. Obviously, it is not possible to randomly assign whether an individual becomes a billionaire or not (there's no world in which researchers could ethically assign one identical twin to be adopted by a 'normal' family, and the other twin to be adopted by an extraordinarily wealthy family). 
 
-It's important to note that this dataset is current as of 2022, not 2023.
-A total of 2,640 billionaires worldwide are represented in this data. 
+However, we can see that there are still differences among billionaires themselves. Being a billionaire is an arbitrary cutoff point between $999,999,999 and $1,000,000,001 USD. 
 
-The data file for this study is `Billionaires Statistics Dataset.csv` and contains the following 36 variables:
+The resulting data file for this study is `Billionaires Statistics Dataset.csv`, which I simplified to 'billionaires'. It contains the following 36 variables:
 
 | Name           | Description                                               |
 |:---------------|:----------------------------------------------------------|
@@ -84,18 +88,12 @@ The data file for this study is `Billionaires Statistics Dataset.csv` and contai
 | `longitude_country`   | Longitude coordinate of the billionaire's country. |
 
 ```{r, echo = FALSE}
-# after install.packages("countrycode")
-library(countrycode)
-
-# Add continent variable
-billionaires <- billionaires |>
-  mutate(continent = countrycode(country, "country.name", "continent"))
-```
-
-
-```{r, echo = FALSE}
 # Calculate median final worth of the billionaires
 median_finalWorth <- median(billionaires$finalWorth)
+
+# Need to find a nice way to print this
+billionaires_aggregate_wealth <- sum(billionaires$finalWorth)
+cat(billionaires_aggregate_wealth)
 
 # Distribution of net worth
 ggplot(data = billionaires,

@@ -1524,18 +1524,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <h2 id="introduction-and-research-question">Introduction and Research Question</h2>
 <p>There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world’s total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world’s total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.</p>
-<div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] 12206800</code></pre>
-</div>
 <p>In this project, I take a look at the wealthiest slice of people: billionaires. The approximately 3,000 billionaires worldwide, as I can conservatively estimate using my dataset, commanded $12.2 trillion USD as a group in 2022.</p>
 <p>Specifically, I am concerned with what differentiates the “nouveau riche” from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?</p>
 <p>I hypothesize that circumstances of birth (e.g. someone’s gender, geographic location, or whether they inherited their wealth) will better explain who becomes a billionaire than whether they are self-made or even more “distant” variables, like their country of origin’s tax rate or education rate.</p>
+<p>This research is important because it may better-inform both reader understanding and policy interventions regarding the worldwide concentration of wealth. For instance, what if such concentrated wealth remains so concentrated through inheritance, marriage, and divorce rather than entrepreneurship, education rates, or tax rates? If that’s the case, then spreading the benefits of such concentrated wealth to the public would involve taxing those life events to some extent. In contrast, if wealth remains concentrated because those who make it big have benefited from living in a well-educated country or from specific tax advantages, that would direct policymakers to intervene elsewhere.</p>
 <h2 id="data-sources-and-variables">Data (Sources and Variables)</h2>
-<p>[ MORE INFO HERE ABOUT THE PROVENANCE OF THE DATASET]</p>
-<p>In addition, I merged the dataset ‘countrycode’ so that I could create a variable representing the continent of the billionaire (‘continent’).</p>
-<p>It’s important to note that this dataset is current as of 2022, not 2023.
-A total of 2,640 billionaires worldwide are represented in this data.</p>
-<p>The data file for this study is <code>Billionaires Statistics Dataset.csv</code> and contains the following 36 variables:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>The author of the original dataset, who published it to Kaggle for public use, cites Forbes and other financial publications as the sources for his dataset. A total of 2,640 billionaires worldwide are represented in this data.</p>
+<p>In addition, I merged the dataset ‘countrycode’ so that I could create a variable representing the continent of the billionaire (‘continent’), in the hopes of better understanding the geographical origins of concentrated wealth.</p>
+<p>It is extremely important to note the experimental design of my analysis. Obviously, it is not possible to randomly assign whether an individual becomes a billionaire or not (there’s no world in which researchers could ethically assign one identical twin to be adopted by a ‘normal’ family, and the other twin to be adopted by an extraordinarily wealthy family).</p>
+<p>However, we can see that there are still differences among billionaires themselves. Being a billionaire is an arbitrary cutoff point between $999,999,999 and $1,000,000,001 USD.</p>
+<p>The resulting data file for this study is <code>Billionaires Statistics Dataset.csv</code>, which I simplified to ‘billionaires’. It contains the following 36 variables:</p>
 <table>
 <colgroup>
 <col style="width: 21%" />
@@ -1570,7 +1571,7 @@ A total of 2,640 billionaires worldwide are represented in this data.</p>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><code>continent</code></td>
-<td style="text-align: left;">Continent of origin of the billionaire</td>
+<td style="text-align: left;">Continent of origin of the billionaire.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><code>country</code></td>
@@ -1695,15 +1696,13 @@ A total of 2,640 billionaires worldwide are represented in this data.</p>
 </tbody>
 </table>
 <div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+<pre><code>12206800</code></pre>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <h2 id="results">Results</h2>
 <p>In the data visualization below, I compare the net worths of self-made and non-self-made billionaires. Interestingly, there is a marked difference in their average net worths. The typical self-made billionaire can expect to have a net worth of approximately $505 million (USD) lower than their counterparts with inherited wealth.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -1757,7 +1756,7 @@ TRUE
 </div>
 <p>Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -1811,7 +1810,7 @@ M
 </div>
 <p>However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
 <p>It is also interesting to take a look at the geographic trends of where billionaires are from. Interestingly, over one fourth of the world’s billionaires are in the United States, which represents only about 4% of the world’s population. Only China comes close, with 20% of the world’s billionaires and 18% of the world’s population. In short, Americans are extremely overrepresented in the population of billionaires worldwide.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1943,13 +1942,13 @@ Canada
 </table>
 </div>
 <div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
 <h2 id="running-regressions-with-net-worth-and-explanatory-variables">Running regressions with net worth and explanatory variables</h2>
 <div class="layout-chunk" data-layout="l-body">
