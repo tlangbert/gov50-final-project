@@ -1519,17 +1519,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
+<h2 id="introduction-and-research-question">Introduction and Research Question</h2>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<h2 id="introduction-and-research-question">Introduction and Research Question</h2>
 <p>There is significant controversy regarding the intense accumulation of wealth by a handful of people worldwide. Of the nearly eight billion people alive today, only a few thousand are billionaires. In fact, over one half of adults in 2022 had net worths less than $1,000 USD. These adults possessed a meager share of the world’s total private wealth: 1.2%. In contrast, 1.1% of adults worldwide were millionaires in 2022, controlling 45.8% of the world’s total private wealth. Some sources predict that these trends will only become more aggravated during the next half-decade.</p>
 <p>In this project, I take a look at the wealthiest slice of people: billionaires. The approximately 3,000 billionaires worldwide, as I can conservatively estimate using my dataset, commanded $12.2 trillion USD as a group in 2022.</p>
 <p>Specifically, I am concerned with what differentiates the “nouveau riche” from billionaires who inherited their wealth. My research question is: to what extent does being self-made explain whether someone becomes a billionaire? Furthermore, are there more powerful explanatory variables related to being a billionaire, like their gender, age, or geographic location? Or are there more circumstantial characteristics accounting for their wealth, like their industry or the GDP of their country of origin?</p>
-<p>The null hypotheses I will test are:
-1. Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.
-2. Country population or GDP is not statistically significant predictors of billionaire net worth.
-3. Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.</p>
+<p>The null hypotheses I will test are:</p>
+<ol type="1">
+<li>Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.</li>
+<li>Country of origin is not a statistically significant predictor of billionaire net worth.</li>
+<li>Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.</li>
+</ol>
 <p>I personally hypothesize that circumstances of birth (e.g. age and gender) will be statistically significant predictors of billionaire net worth, while more “distant” factors like the GDP or population of the country of origin will not be statistically significant.</p>
 <p>This research is important because it may better-inform both reader understanding and policy interventions regarding the worldwide concentration of wealth. For instance, what if such concentrated wealth remains so concentrated through inheritance, marriage, and divorce rather than entrepreneurship, education rates, or tax rates? If that’s the case, then spreading the benefits of such concentrated wealth to the public would involve taxing those life events to some extent. In contrast, if wealth remains concentrated because those who make it big have benefited from living in a well-educated country or from specific tax advantages, that would direct policymakers to intervene elsewhere.</p>
 <h2 id="data-sources-and-variables">Data (Sources and Variables)</h2>
@@ -1712,7 +1714,7 @@ The median net worth of all of the billionaires is approximately $2.3 billion.</
 <h2 id="results">Results</h2>
 <p>As a reminder, these are the null hypotheses I tested.
 1. Self-made status is not statistically significant. Self-made billionaires are not wealthier than non-self-made billionaires.
-2. Country population or GDP is not statistically significant predictors of billionaire net worth.
+2. Country of origin is not a statistically significant predictor of billionaire net worth.
 3. Circumstances of birth, e.g. age and gender, are not statistically significant predictors of billionaire net worth.</p>
 <p>To address the first null hypothesis, I first compared the average net worth of self-made and non-self-made billionaires. There is a marked difference: the typical self-made billionaire can expect to have a net worth approximately $505 million USD lower than that of their counterparts with inherited wealth.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1852,7 +1854,8 @@ R2 Adj.
 </tbody>
 </table>
 </div>
-<p>Just as the box plot above demonstrated, being self-made equates to an approximate $505 million decrease in net worth (as shown by the coefficient on the variable selfMadeTRUE). However, even with a generous <span class="math inline">\(\alpha\)</span> = 0.1, the p-value of 0.221 is not statistically significant, so we cannot reject the null hypothesis that there’s no difference in net worth between self-made and not-self-made billionaires.</p>
+<p>Just as the box plot above demonstrated, being self-made equates to an approximate $505 million decrease in net worth (as shown by the coefficient on the variable selfMadeTRUE). However, with an alpha of <span class="math inline">\(\alpha\)</span> = 0.1, the p-value of 0.221 is not statistically significant, so we cannot reject the null hypothesis that there’s no difference in net worth between self-made and not-self-made billionaires.</p>
+<p>Then I tested the second null hypothesis: that country of origin is not a statistically significant predictor of billionaire net worth.</p>
 <p>It is also interesting to take a look at the geographic trends of where billionaires are from. Interestingly, over one fourth of the world’s billionaires are in the United States, which represents only about 4% of the world’s population. Only China comes close, with 20% of the world’s billionaires and 18% of the world’s population. In short, Americans are extremely overrepresented in the population of billionaires worldwide.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -1985,8 +1988,7 @@ Canada
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
 </div>
-<p>To address the second hypothesis, regarding geographic origins, I examined a number of factors.</p>
-<p>It is also interesting to take a look at the geographic trends of where billionaires are from.First, to visualize where the majority of billionaires live, I generated a count of the top 14 countries where billionaires live. In total, almost two-thirds of the world’s billionaires lived in these countries.</p>
+<p>It is also interesting to take a look at the geographic trends of where billionaires are from. First, to visualize where the majority of billionaires live, I generated a count of the top 14 countries where billionaires live. In total, almost two-thirds of the world’s billionaires lived in these countries.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <thead>
@@ -2115,174 +2117,9 @@ Canada
 </tbody>
 </table>
 </div>
-<p>Over one fourth of the dataset’s billionaires are in the United States, which represents only about 4% of the world’s population. Only China comes close, with 20% of the world’s billionaires and 18% of the world’s population. In short, Americans are far overrepresented in the population of billionaires worldwide.
-To further examine this point, I ran a regression to test the relationship between net worth and country of origin (which is much too large to print). Of the top 14 countries, only one was statistically significant at a p-value of <span class="math inline">\(\alpha\)</span> = 0.1: the United States, with a p-value of p = 0.025.</p>
-<div class="layout-chunk" data-layout="l-body">
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
- (1)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-4613.168
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 429.692
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = &lt;0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-in_top14TRUE
-</td>
-<td style="text-align:center;">
-13.250
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 479.956
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-p = 0.978
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-2640
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2 Adj.
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
- (1)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-4289.312
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 295.909
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = &lt;0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-in_top4TRUE
-</td>
-<td style="text-align:center;">
-574.881
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 387.940
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-p = 0.138
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-2640
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2
-</td>
-<td style="text-align:center;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2 Adj.
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>Over one fourth of the dataset’s billionaires are in the United States, which represents only about 4% of the world’s population. Only China comes close, with 20% of the world’s billionaires and 18% of the world’s population. In short, Americans are far overrepresented in the population of billionaires worldwide.</p>
+<p>To further examine this point, I ran a regression to test the relationship between net worth and country of origin (which is much too large to print). Of the top 14 countries, only one was statistically significant at a p-value of <span class="math inline">\(\alpha\)</span> = 0.1: the United States, with a p-value of p = 0.025.</p>
+<p>Furthermore, I found that residence in no continent had a statistically significant bearing on the net worth of the billionaire.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2432,10 +2269,9 @@ R2 Adj.
 </tbody>
 </table>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
-</div>
-<p>Things get more interesting when we bring gender into the equation. In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher.</p>
+<p>In conclusion, when it comes to the second null hypothesis, I found that no country of origin was statistically significant to a billionaire’s net worth other than the United States, Belgium, France, and Mexico.</p>
+<p>Finally, I analyzed my third null hypothesis: that circumstances of birth like age and gender are not statistically significant to net worth.</p>
+<p>In the data visualization below, we see that male and female billionaires perform comparatively well with one another. Although the average net worth of female billionaires trails that of their male counterparts by approximately $61 million USD, their median net worth is actually $200 million USD higher.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <thead>
@@ -2487,16 +2323,12 @@ M
 </table>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
 </div>
-<p>However, this picture is somewhat complicated by the fact that female billionaires are comparatively rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.</p>
+<p>However, this picture is somewhat complicated by the fact that female billionaires are rare. In this dataset, fewer than 400 of the 2,640 recorded billionaires are female. Not only that, the majority of female billionaires inherited their wealth. This trend reverses for male billionaires, the majority of whom are self-made and did not inherit their wealth.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
-</div>
-<h2 id="running-regressions-with-net-worth-and-explanatory-variables">Running regressions with net worth and explanatory variables</h2>
 <div class="layout-chunk" data-layout="l-body">
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2514,65 +2346,21 @@ M
 (Intercept)
 </td>
 <td style="text-align:center;">
-1521.656
+4570.326
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-s.e. = 1877.910
+s.e. = 535.806
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-p = 0.418
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age
-</td>
-<td style="text-align:center;">
-41.768
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 16.153
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = 0.010
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-selfMadeTRUE
-</td>
-<td style="text-align:center;">
-−706.178
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 499.296
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = 0.157
+p = &lt;0.001
 </td>
 </tr>
 <tr>
@@ -2580,87 +2368,21 @@ p = 0.157
 genderM
 </td>
 <td style="text-align:center;">
-164.070
+61.285
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-s.e. = 686.074
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = 0.811
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-gross_tertiary_education_enrollment
-</td>
-<td style="text-align:center;">
-24.629
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 12.191
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = 0.043
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tax_revenue_country_country
-</td>
-<td style="text-align:center;">
-−47.431
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 44.709
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-p = 0.289
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-population_country
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-s.e. = 0.000
+s.e. = 573.670
 </td>
 </tr>
 <tr>
 <td style="text-align:left;box-shadow: 0px 1.5px">
 </td>
 <td style="text-align:center;box-shadow: 0px 1.5px">
-p = 0.482
+p = 0.915
 </td>
 </tr>
 <tr>
@@ -2668,7 +2390,7 @@ p = 0.482
 Num.Obs.
 </td>
 <td style="text-align:center;">
-2408
+2640
 </td>
 </tr>
 <tr>
@@ -2676,7 +2398,7 @@ Num.Obs.
 R2
 </td>
 <td style="text-align:center;">
-0.009
+0.000
 </td>
 </tr>
 <tr>
@@ -2684,18 +2406,20 @@ R2
 R2 Adj.
 </td>
 <td style="text-align:center;">
-0.007
+0.000
 </td>
 </tr>
 </tbody>
 </table>
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared  sigma statistic p.value    df  logLik
-      &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1   0.00906       0.00659 10178.      3.66 0.00127     6 -25634.
-# ℹ 5 more variables: AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,
-#   df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 </div>
+<p>The regression and data visualizations demonstrate an important point. Although far fewer women are billionaires, the difference in net worths between male and female billionaires is not at all statistically significant. With an alpha at <span class="math inline">\(\alpha\)</span> = 0.1 and a p-value of p = 0.915, we cannot reject the null hypothesis that gender is not statistically significant.</p>
+<p>I then went on to analyze the statistical significance of age and net worth.
+First, I divided ages into cohorts to better visualize the typical ages of billionaires. This is what I found:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<p>Overall, elderly billionaires are far more common than young billionaires. It also seems that there is a relatively normal distribution of ages, centered around the 60-79 year-old cohort.</p>
+<p>I then ran a regression of net worth and age, where I found the following:</p>
 <div class="layout-chunk" data-layout="l-body">
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2778,24 +2502,19 @@ R2 Adj.
 </tr>
 </tbody>
 </table>
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df  logLik    AIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-1   0.00450       0.00411 9922.      11.6 6.62e-4     1 -27349. 54704.
-# ℹ 4 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;,
-#   nobs &lt;int&gt;</code></pre>
 </div>
+<p>With an alpha at <span class="math inline">\(\alpha\)</span> = 0.1 and a p-value of p &lt; 0.001, the relationship between net worth and age is highly statistically significant. It is also by far the most statistically significant variable I examined for this analysis. On average, for every one-point (one-year) increase in age, we see a $50 million increase in net worth (the coefficient on the ‘age’ variable in the regression).</p>
 <h2 id="conclusion">Conclusion</h2>
-<h2 id="bibliography-incomplete">Bibliography (incomplete)</h2>
-<p><a href="https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset" class="uri">https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset</a>
-r package “countrycode”
-<a href="https://worldpopulationreview.com" class="uri">https://worldpopulationreview.com</a>
-<a href="https://www.statista.com/statistics/203930/global-wealth-distribution-by-net-worth/" class="uri">https://www.statista.com/statistics/203930/global-wealth-distribution-by-net-worth/</a>
-<a href="https://www.visualcapitalist.com/global-wealth-distribution/" class="uri">https://www.visualcapitalist.com/global-wealth-distribution/</a></p>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>This data analysis led to some interesting conclusions about the factors that are statistically significant to billionaire net worth. Surprisingly (to this author), neither self-made status or gender were statistically significant. In addition, country of origin was statistically significant only for four countries: the United States, France, Belgium, and Mexico. The only factor proving undeniably statistically significant was age.</p>
+<p>If I were to have more time and resources, I would want to study where this wealth is held. If age is so statistically significant, I would want to tease out whether that is due to financial factors like compound interest, or if there is a relationship between the business experience of a billionaire and their success. This might have significant implications for policies like systems of capital gains taxes.
+I also believe my analysis would improve if I had the resources and data making it possible to compare demographic statistics about billionaires at large with the demographics and the net worths of all individuals worldwide.</p>
+<p>Finally, one major limitation to this cross-sectional design is that it assumes that control and treatment groups are identical on average. However, it goes without saying that billionaires cannot be assumed to be representative of the world population at large, even if they’re self-made. After all, the definition of “self-made” is blurry. Many self-made billionaires came from wealthy personal backgrounds that may have provided them with the opportunities they needed to become billionaires, even though they did not technically inherit billions of dollars.</p>
+<h2 id="bibliography">Bibliography</h2>
+<p>World Population by Country 2023 (Live), <a href="https://worldpopulationreview.com" class="uri">https://worldpopulationreview.com</a>. Accessed 11 December 2023.
+“Billionaires Statistics Dataset (2023).” Kaggle, <a href="https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset" class="uri">https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset</a>. Accessed 11 December 2023.
+Dyvik, Einar H. “Worldwide wealth distribution 2022.” Statista, 23 August 2023, <a href="https://www.statista.com/statistics/203930/global-wealth-distribution-by-net-worth/" class="uri">https://www.statista.com/statistics/203930/global-wealth-distribution-by-net-worth/</a>. Accessed 11 December 2023.
+Neufeld, Dorothy, and Niccolo Conte. “Visualizing the Pyramid of Global Wealth Distribution.” Visual Capitalist, 2 November 2023, <a href="https://www.visualcapitalist.com/global-wealth-distribution/" class="uri">https://www.visualcapitalist.com/global-wealth-distribution/</a>. Accessed 11 December 2023.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
