@@ -231,7 +231,7 @@ ggplot(data = billionaires,
            y = finalWorth, 
            fill = selfMade)) +
   geom_boxplot() +
-  scale_y_log10(labels = scales::dollar_format(prefix = "$")) +  # Change scale of y axis w/ help of GPT <3 
+  scale_y_log10(labels = scales::dollar_format(prefix = "$")) + 
   labs(x = "Self-Made Status", 
        y = "Net Worth (in millions of dollars)", 
        title = "Comparing Billionaires' Net Worths by Continent & Self-Made Status", 
@@ -403,11 +403,18 @@ I also believe my analysis would improve if I had the resources and data making 
 
 Finally, one major limitation to this cross-sectional design is that it assumes that control and treatment groups are identical on average. However, it goes without saying that billionaires cannot be assumed to be representative of the world population at large, even if they're self-made. After all, the definition of "self-made" is blurry. Many self-made billionaires came from wealthy personal backgrounds that may have provided them with the opportunities they needed to become billionaires, even though they did not technically inherit billions of dollars.
 
+## Appendix
+```{r print-code, ref.label=knitr::all_labels(), echo = TRUE, eval=FALSE}
+
+```
 ## Bibliography
 
 World Population by Country 2023 (Live), https://worldpopulationreview.com. Accessed 11 December 2023.
+
 “Billionaires Statistics Dataset (2023).” Kaggle, https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset. Accessed 11 December 2023.
+
 Dyvik, Einar H. “Worldwide wealth distribution 2022.” Statista, 23 August 2023, https://www.statista.com/statistics/203930/global-wealth-distribution-by-net-worth/. Accessed 11 December 2023.
+
 Neufeld, Dorothy, and Niccolo Conte. “Visualizing the Pyramid of Global Wealth Distribution.” Visual Capitalist, 2 November 2023, https://www.visualcapitalist.com/global-wealth-distribution/. Accessed 11 December 2023.
 
 
